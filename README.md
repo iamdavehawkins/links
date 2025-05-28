@@ -41,4 +41,4 @@ As this is a simple static site, you can edit the HTML/CSS directly and test by 
 
 ---
 
-© Dave Hawkins | Music & Bad Jokes | Denver, CO
+Dave Hawkins | Music & Bad Jokes | Denver, CO
