@@ -147,12 +147,69 @@
             margin: 20px 0;
             color: #CCCCCC;
         }
+        
+        /* Hand-drawn text and arrow styles */
+        .jump-text {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            margin-left: 10px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            font-size: 18px;
+            color: #1eff00;
+            transform: rotate(-8deg);
+            text-shadow: 1px 1px 2px #000000;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 0.5px;
+            font-style: italic;
+            filter: drop-shadow(0 0 1px rgba(255,255,255,0.5));
+            white-space: nowrap;
+            z-index: 10;
+        }
+        
+        .emoji-arrow {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            margin-left: 40px;
+            font-size: 24px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 10;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+        }
+        
+        @keyframes float-arrow {
+            0%, 100% { transform: translateY(0) rotate(225deg) skew(15deg, 15deg); }
+            50% { transform: translateY(-5px) rotate(225deg) skew(15deg, 15deg); }
+        }
     </style>
 </head>
 <body>
-    <div class="profile">
-        <img src="LogoWhite.png" alt="Dave Hawkins Logo">
+    <div class="profile" style="position: relative;">
+        <a href="#" id="randomSongLink">
+            <img src="LogoWhite.png" alt="Dave Hawkins Logo">
+        </a>
+        <div class="jump-text">jump through time</div>
+        <div class="emoji-arrow">⬅️</div>
     </div>
+    
+    <script>
+        document.getElementById('randomSongLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            const songPages = [
+                'https://bones.iamdavehawkins.com/',
+                'https://strawberrysummer.iamdavehawkins.com/',
+                'https://woolandfur.iamdavehawkins.com/',
+                'https://santafe.iamdavehawkins.com/'
+            ];
+            const randomPage = songPages[Math.floor(Math.random() * songPages.length)];
+            window.location.href = randomPage;
+        });
+    </script>
     <h1>DAVE HAWKINS</h1>
     <h2>Bad jokes, catchy melodies. Denver, CO</h2>
     
