@@ -8,30 +8,36 @@
     <style>
         body {
             font-family: "Courier New", Courier, monospace;
-            background-color: #000000;
-            color: #FFFFFF;
+            background-color: #3A3226;
+            color: #D9CFC1;
             max-width: 800px;
-            margin: 10px auto;
-            padding: 10px;
+            margin: 5px auto;
+            padding: 5px;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.4;
         }
+        
+        /* Removed gradient animation */
         
         h1 {
             font-size: 28px;
-            margin-bottom: 5px;
+            margin: 0;
             letter-spacing: 3px;
+            color: #D9CFC1;
+            text-shadow: none;
         }
         
         h2 {
             font-size: 16px;
-            color: #CCCCCC;
+            color: #A89078;
             font-weight: normal;
             letter-spacing: 2px;
+            margin: 0 0 5px 0;
+            text-shadow: none;
         }
         
         .profile {
-            margin: 5px auto;
+            margin: 0 auto 2px auto;
         }
         
         .profile img {
@@ -42,86 +48,96 @@
         }
         
         .links {
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         .link-item {
             display: flex;
             align-items: center;
-            margin: 15px auto;
-            padding: 10px 15px;
+            margin: 8px auto;
+            padding: 8px 12px;
             width: 80%;
             max-width: 400px;
-            background-color: #111111;
-            border: 1px solid #FFFFFF;
+            background-color: #A89078;
+            border: 2px solid #5E4B3C;
             text-decoration: none;
-            color: #FFFFFF;
-            font-weight: normal;
+            color: #F5F1E3;
+            font-weight: bold;
             letter-spacing: 1px;
+            box-shadow: 3px 3px 0px #8C7458;
+            transition: all 0.3s ease;
         }
         
         .link-item:hover {
-            background-color: #333333;
+            background-color: #8C7458;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #5E4B3C;
         }
         
         .icon {
             width: 20px;
             height: 20px;
-            margin-right: 15px;
-            fill: #FFFFFF;
+            margin-right: 12px;
+            fill: #F5F1E3;
         }
         
         .newsletter-form {
-            margin: 15px auto;
+            margin: 8px auto;
             width: 80%;
             max-width: 400px;
-            background-color: #111111;
-            border: 1px solid #FFFFFF;
-            padding: 15px;
+            background-color: #5E4B3C;
+            border: 2px solid #8C7458;
+            padding: 10px;
             text-align: center;
+            box-shadow: 3px 3px 0px #2A2018;
         }
         
         .newsletter-form input[type="email"] {
             width: 90%;
             max-width: 280px;
-            padding: 8px;
-            margin: 10px 0;
-            background-color: #222222;
-            border: 1px solid #444444;
-            color: #FFFFFF;
+            padding: 6px;
+            margin: 6px 0;
+            background-color: #F5F1E3;
+            border: 2px solid #5E4B3C;
+            color: #3A3226;
             font-family: "Courier New", Courier, monospace;
         }
         
         .newsletter-form input[type="submit"] {
-            background-color: #333333;
-            color: #FFFFFF;
-            border: 1px solid #FFFFFF;
-            padding: 8px 15px;
+            background-color: #8C7458;
+            color: #F5F1E3;
+            border: 2px solid #5E4B3C;
+            padding: 6px 12px;
             cursor: pointer;
             font-family: "Courier New", Courier, monospace;
             letter-spacing: 1px;
+            font-weight: bold;
         }
         
         .newsletter-form input[type="submit"]:hover {
-            background-color: #444444;
+            background-color: #A89078;
+            transform: scale(1.05);
         }
         
         .newsletter-form p {
             font-size: 10px;
-            margin-top: 10px;
+            margin-top: 6px;
+            color: #C4B7A6;
         }
         
         .newsletter-form a {
-            color: #999999;
+            color: #D9CFC1;
             text-decoration: none;
+            font-weight: bold;
         }
         
         .footer {
-            margin-top: 5px;
+            margin-top: 3px;
             font-size: 12px;
-            color: #999999;
-            border-top: 1px solid #333333;
-            padding-top: 5px;
+            color: #A89078;
+            border-top: 2px solid #5E4B3C;
+            padding-top: 3px;
+            text-shadow: none;
         }
         
         .blink {
@@ -135,17 +151,66 @@
         }
         
         .divider {
-            height: 1px;
-            background-color: #333333;
-            margin: 5px 0;
+            height: 2px;
+            background-color: #8C7458;
+            margin: 3px 0;
+        }
+        
+        .music-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 8px auto;
+            width: 80%;
+            max-width: 400px;
+        }
+        
+        .music-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #A89078;
+            border: 2px solid #5E4B3C;
+            text-decoration: none;
+            color: #F5F1E3;
+            box-shadow: 2px 2px 0px #8C7458;
+        }
+        
+        .music-link:hover {
+            background-color: #8C7458;
+            transform: scale(1.1);
+        }
+        
+        .music-icon {
+            width: 24px;
+            height: 24px;
+            fill: #F5F1E3;
+        }
+
+        .link-description {
+            font-size: 12px;
+            color: #ffffff;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+            margin-left: auto;
         }
         
         pre {
             font-family: "Courier New", Courier, monospace;
             font-size: 12px;
             line-height: 1.2;
-            margin: 20px 0;
-            color: #CCCCCC;
+            margin: 10px 0;
+            color: #A89078;
+            text-shadow: none;
+        }
+        
+        .singles-image {
+            width: 200px;
+            height: auto;
+            margin: 3px auto;
+            display: block;
         }
         
         /* Hand-drawn text and arrow styles */
@@ -156,13 +221,13 @@
             margin-left: 10px;
             font-family: "Comic Sans MS", cursive, sans-serif;
             font-size: 18px;
-            color: #1eff00;
+            color: #D9CFC1;
             transform: rotate(-8deg);
-            text-shadow: 1px 1px 2px #000000;
+            text-shadow: 1px 1px 0px #2A2018;
             animation: float 3s ease-in-out infinite;
             letter-spacing: 0.5px;
             font-style: italic;
-            filter: drop-shadow(0 0 1px rgba(255,255,255,0.5));
+            filter: drop-shadow(0 0 2px rgba(217,207,193,0.4));
             white-space: nowrap;
             z-index: 10;
         }
@@ -214,6 +279,8 @@
     <h1>DAVE HAWKINS</h1>
     <h2>Bad jokes, catchy melodies. Denver, CO</h2>
     
+    <img src="All Singles.png" alt="All Singles" class="singles-image">
+    
     <div class="divider"></div>
 
     <div class="newsletter-form">
@@ -227,66 +294,85 @@
           <label for="bd-email">SUBSCRIBE TO MY NEWSLETTER</label>
           <input type="email" name="email" id="bd-email" placeholder="your@email.com" />
           <input type="submit" value="SUBSCRIBE" />
-          <p>
-            <a href="https://buttondown.com/refer/iamdavehawkins" target="_blank">Powered by Buttondown</a>
-          </p>
         </form>
     </div>
     
+    <div class="music-row">
+        <a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa?si=pdKZe4eWQu2tCU04vdqSgw" class="music-link" title="Spotify" target="_blank">
+            <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 30.6 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+            </svg>
+        </a>
+        <a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" class="music-link" title="Apple Music" target="_blank">
+            <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+            </svg>
+        </a>
+        <a href="https://music.youtube.com/channel/UC-IbKKTFITC-p_5rXqGvs6g" class="music-link" title="YouTube Music" target="_blank">
+            <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 13.5v-7l6 3.5-6 3.5z"/>
+            </svg>
+        </a>
+    </div>
+    
     <div class="links">
-        <a href="https://iamdavehawkins.bandcamp.com/" class="link-item">
+        <a href="https://iamdavehawkins.bandcamp.com/" class="link-item" target="_blank">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/>
             </svg>
-            BANDCAMP
+            BANDCAMP <span class="link-description">(buy music)</span>
         </a>
-        <a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa?si=pdKZe4eWQu2tCU04vdqSgw" class="link-item">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                <path fill="currentColor" d="M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 30.6 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"/>
+        <a href="https://buttondown.com/iamdavehawkins/archive/" class="link-item" target="_blank">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path fill="currentColor" d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/>
             </svg>
-            SPOTIFY
+            NEWSLETTER <span class="link-description">(archive)</span>
         </a>
-        <a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" class="link-item">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-                <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+        <a href="https://iamdavehawkins.bandcamp.com/merch/dave-hawkins-sticker-pack" class="link-item" target="_blank">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path fill="currentColor" d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
             </svg>
-            APPLE MUSIC
+            MERCH <span class="link-description">(stickers)</span>
         </a>
-        <a href="https://www.youtube.com/@iamdavehawkins" class="link-item">
+        <a href="https://www.youtube.com/@iamdavehawkins" class="link-item" target="_blank">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                 <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
             </svg>
-            YOUTUBE
+            YOUTUBE <span class="link-description">(covers + music videos)</span>
         </a>
-        <a href="https://www.threads.com/@iamdavehawkins" class="link-item">
+        <a href="https://tracktunes.app" class="link-item" target="_blank">
+            <img src="TrackTunes.png" alt="TrackTunes" class="icon">
+            TRACKTUNES <span class="link-description">(strava + music)</span>
+        </a>
+        <a href="https://www.linkedin.com/in/iamdavehawkins/" class="link-item" target="_blank">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
+            </svg>
+            LINKEDIN <span class="link-description">(boring)</span>
+        </a>
+        <a href="https://www.threads.com/@iamdavehawkins" class="link-item" target="_blank">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                 <path fill="currentColor" d="M141.537 88.9883C140.71 88.5919 139.87 88.2104 139.019 87.8451C137.537 60.5382 122.616 44.905 97.5619 44.745C97.4484 44.7443 97.3355 44.7443 97.222 44.7443C82.2364 44.7443 69.7731 51.1409 62.102 62.7807L75.881 72.2328C81.6116 63.5383 90.6052 61.6848 97.2286 61.6848C97.3051 61.6848 97.3819 61.6848 97.4576 61.6855C105.707 61.7381 111.932 64.1366 115.961 68.814C118.893 72.2193 120.854 76.925 121.825 82.8638C114.511 81.6207 106.601 81.2385 98.145 81.7233C74.3247 83.0954 59.0111 96.9879 60.0396 116.292C60.5615 126.084 65.4397 134.508 73.775 140.011C80.8224 144.663 89.899 146.938 99.3323 146.423C111.79 145.74 121.563 140.987 128.381 132.296C133.559 125.696 136.834 117.143 138.28 106.366C144.217 109.949 148.617 114.664 151.047 120.332C155.179 129.967 155.42 145.8 142.501 158.708C131.182 170.016 117.576 174.908 97.0135 175.059C74.2042 174.89 56.9538 167.575 45.7381 153.317C35.2355 139.966 29.8077 120.682 29.6052 96C29.8077 71.3178 35.2355 52.0336 45.7381 38.6827C56.9538 24.4249 74.2039 17.11 97.0132 16.9405C119.988 17.1113 137.539 24.4614 149.184 38.788C154.894 45.8136 159.199 54.6488 162.037 64.9503L178.184 60.6422C174.744 47.9622 169.331 37.0357 161.965 27.974C147.036 9.60668 125.202 0.195148 97.0695 0H96.9569C68.8816 0.19447 47.2921 9.6418 32.7883 28.0793C19.8819 44.4864 13.2244 67.3157 13.0007 95.9325L13 96L13.0007 96.0675C13.2244 124.684 19.8819 147.514 32.7883 163.921C47.2921 182.358 68.8816 191.806 96.9569 192H97.0695C122.03 191.827 139.624 185.292 154.118 170.811C173.081 151.866 172.51 128.119 166.26 113.541C161.776 103.087 153.227 94.5962 141.537 88.9883ZM98.4405 129.507C88.0005 130.095 77.1544 125.409 76.6196 115.372C76.2232 107.93 81.9158 99.626 99.0812 98.6368C101.047 98.5234 102.976 98.468 104.871 98.468C111.106 98.468 116.939 99.0737 122.242 100.233C120.264 124.935 108.662 128.946 98.4405 129.507Z"/>
             </svg>
-            THREADS
+            THREADS <span class="link-description">(most active)</span>
         </a>
         <a href="https://www.instagram.com/iamdavehawkins" class="link-item">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
             </svg>
-            INSTAGRAM
+            INSTAGRAM <span class="link-description">(pretty active)</span>
         </a>
         <a href="https://www.tiktok.com/@iamdavehawkins" class="link-item">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path fill="currentColor" d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
             </svg>
-            TIKTOK
-        </a>
-        <a href="https://newsletter.iamdavehawkins.com" class="link-item">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
-            </svg>
-            NEWSLETTER
+            TIKTOK <span class="link-description">(promo)</span>
         </a>
         <a href="https://photography.iamdavehawkins.com" class="link-item">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path fill="currentColor" d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/>
             </svg>
-            FILM PHOTOGRAPHY
+            35MM FILM <span class="link-description">(hobby)</span>
         </a>
     </div>
     
