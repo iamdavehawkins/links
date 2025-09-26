@@ -6,34 +6,99 @@
     <title>Dave Hawkins Links</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-        body {
-            font-family: "Courier New", Courier, monospace;
-            background-color: #3A3226;
-            color: #D9CFC1;
-            max-width: 800px;
-            margin: 5px auto;
-            padding: 5px;
-            text-align: center;
-            line-height: 1.4;
+        /* Custom Font Declarations */
+        @font-face {
+            font-family: 'Degular Text';
+            src: url('../fonts/DegularText-Regular.woff2') format('woff2'),
+                 url('https://cdn.iamdavehawkins.com/DegularText-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
         }
         
-        /* Removed gradient animation */
+        @font-face {
+            font-family: 'Obviously Compressed';
+            src: url('../fonts/Obviously-CompressedMedium.woff2') format('woff2'),
+                 url('https://cdn.iamdavehawkins.com/Obviously-CompressedMedium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Compadre Extended';
+            src: url('../fonts/Compadre-Extended.woff2') format('woff2'),
+                 url('https://cdn.iamdavehawkins.com/Compadre-Extended.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Vulf Mono';
+            src: url('../fonts/Vulf_Mono-Light_Italic_web.woff2') format('woff2'),
+                 url('https://cdn.iamdavehawkins.com/Vulf_Mono-Light_Italic_web.woff2') format('woff2');
+            font-weight: 300;
+            font-style: italic;
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'Coniferous';
+            src: url('../fonts/Coniferous-Regular.woff2') format('woff2'),
+                 url('https://cdn.iamdavehawkins.com/Coniferous-Regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+        }
+        
+        body {
+            font-family: 'Degular Text', Georgia, serif;
+            background-color: #222222;
+            color: #F4F0E6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            line-height: 1.5;
+            font-size: 16px;
+            overflow-x: hidden;
+            width: 100%;
+        }
         
         h1 {
-            font-size: 28px;
+            font-family: 'Compadre Extended', Georgia, serif;
+            font-size: 3.5em;
             margin: 0;
-            letter-spacing: 3px;
-            color: #D9CFC1;
-            text-shadow: none;
+            letter-spacing: 2px;
+            color: #F4F0E6;
         }
         
         h2 {
-            font-size: 16px;
-            color: #A89078;
+            font-family: 'Degular Text', Georgia, serif;
+            font-size: 1.3em;
+            color: #4F6A89;
             font-weight: normal;
-            letter-spacing: 2px;
-            margin: 0 0 5px 0;
-            text-shadow: none;
+            letter-spacing: 1px;
+            margin: 0 0 15px 0;
+        }
+        
+        h3 {
+            font-family: 'Obviously Compressed', Arial, sans-serif;
+            font-size: 2.2em;
+            font-weight: 500;
+            color: #D8A34A;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 25px 0 20px 0;
         }
         
         .profile {
@@ -55,105 +120,108 @@
             display: flex;
             align-items: center;
             margin: 8px auto;
-            padding: 8px 12px;
+            padding: 14px 18px;
             width: 80%;
             max-width: 400px;
-            background-color: #A89078;
-            border: 2px solid #5E4B3C;
+            background-color: #9B4A34;
+            border: 2px solid #4F6A89;
             text-decoration: none;
-            color: #F5F1E3;
+            color: #F4F0E6;
+            font-family: 'Degular Text', Georgia, serif;
+            font-size: 1.1em;
             font-weight: bold;
             letter-spacing: 1px;
-            box-shadow: 3px 3px 0px #8C7458;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
         }
         
         .link-item:hover {
-            background-color: #8C7458;
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px #5E4B3C;
+            background-color: #D8A34A;
+            color: #222222;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
         }
         
         .icon {
             width: 20px;
             height: 20px;
             margin-right: 12px;
-            fill: #F5F1E3;
+            fill: currentColor;
         }
         
         .newsletter-form {
             margin: 8px auto;
             width: 80%;
             max-width: 400px;
-            background-color: #5E4B3C;
-            border: 2px solid #8C7458;
-            padding: 10px;
+            background-color: #4F6A89;
+            border: 2px solid #9B4A34;
+            padding: 15px;
             text-align: center;
-            box-shadow: 3px 3px 0px #2A2018;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         }
         
         .newsletter-form input[type="email"] {
             width: 90%;
             max-width: 280px;
-            padding: 6px;
-            margin: 6px 0;
-            background-color: #F5F1E3;
-            border: 2px solid #5E4B3C;
-            color: #3A3226;
-            font-family: "Courier New", Courier, monospace;
+            padding: 10px;
+            margin: 8px 0;
+            background-color: #F4F0E6;
+            border: 2px solid #9B4A34;
+            color: #222222;
+            font-family: 'Degular Text', Georgia, serif;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         
         .newsletter-form input[type="submit"] {
-            background-color: #8C7458;
-            color: #F5F1E3;
-            border: 2px solid #5E4B3C;
-            padding: 6px 12px;
+            background-color: #D8A34A;
+            color: #222222;
+            border: 2px solid #9B4A34;
+            padding: 10px 16px;
             cursor: pointer;
-            font-family: "Courier New", Courier, monospace;
+            font-family: 'Degular Text', Georgia, serif;
             letter-spacing: 1px;
             font-weight: bold;
+            border-radius: 4px;
         }
         
         .newsletter-form input[type="submit"]:hover {
-            background-color: #A89078;
+            background-color: #9B4A34;
+            color: #F4F0E6;
             transform: scale(1.05);
         }
         
         .newsletter-form p {
-            font-size: 10px;
-            margin-top: 6px;
-            color: #C4B7A6;
+            font-size: 11px;
+            margin-top: 8px;
+            color: #F4F0E6;
         }
         
         .newsletter-form a {
-            color: #D9CFC1;
+            color: #D8A34A;
             text-decoration: none;
             font-weight: bold;
         }
         
         .footer {
-            margin-top: 3px;
-            font-size: 12px;
-            color: #A89078;
-            border-top: 2px solid #5E4B3C;
-            padding-top: 3px;
-            text-shadow: none;
+            margin-top: 20px;
+            font-family: 'Vulf Mono', 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: 300;
+            font-style: italic;
+            color: #D8A34A;
+            border-top: 2px solid #4F6A89;
+            padding-top: 10px;
         }
         
-        .blink {
-            animation: blinker 1s linear infinite;
-        }
-        
-        @keyframes blinker {
-            50% {
-                opacity: 0;
-            }
-        }
         
         .divider {
             height: 2px;
-            background-color: #8C7458;
-            margin: 3px 0;
+            background-color: #4F6A89;
+            margin: 15px 0;
+            border-radius: 1px;
         }
         
         .music-row {
@@ -171,39 +239,34 @@
             justify-content: center;
             width: 50px;
             height: 50px;
-            background-color: #A89078;
-            border: 2px solid #5E4B3C;
+            background-color: #9B4A34;
+            border: 2px solid #4F6A89;
             text-decoration: none;
-            color: #F5F1E3;
-            box-shadow: 2px 2px 0px #8C7458;
+            color: #F4F0E6;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
         }
         
         .music-link:hover {
-            background-color: #8C7458;
+            background-color: #D8A34A;
+            color: #222222;
             transform: scale(1.1);
         }
         
         .music-icon {
             width: 24px;
             height: 24px;
-            fill: #F5F1E3;
+            fill: currentColor;
         }
 
         .link-description {
-            font-size: 12px;
-            color: #ffffff;
+            font-size: 20px;
+            color: #F4F0E6;
             font-weight: normal;
             letter-spacing: 0.5px;
             margin-left: auto;
-        }
-        
-        pre {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 12px;
-            line-height: 1.2;
-            margin: 10px 0;
-            color: #A89078;
-            text-shadow: none;
+            opacity: 0.8;
         }
         
         .singles-image {
@@ -213,43 +276,181 @@
             display: block;
         }
         
-        /* Hand-drawn text and arrow styles */
-        .jump-text {
-            position: absolute;
-            top: -5px;
-            left: 50%;
-            margin-left: 10px;
-            font-family: "Comic Sans MS", cursive, sans-serif;
-            font-size: 18px;
-            color: #D9CFC1;
-            transform: rotate(-8deg);
-            text-shadow: 1px 1px 0px #2A2018;
-            animation: float 3s ease-in-out infinite;
-            letter-spacing: 0.5px;
-            font-style: italic;
-            filter: drop-shadow(0 0 2px rgba(217,207,193,0.4));
-            white-space: nowrap;
-            z-index: 10;
+        /* Mobile-First Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+                margin: 0;
+                width: 100%;
+                max-width: 100vw;
+            }
+            
+            h1 {
+                font-size: 2.8em;
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+                word-wrap: break-word;
+            }
+            
+            h2 {
+                font-size: 1.2em;
+                margin-bottom: 12px;
+            }
+            
+            h3 {
+                font-size: 2.5em;
+                margin: 10px 0 7px 0;
+            }
+            
+            .link-item {
+                width: 90%;
+                padding: 16px 18px;
+                margin: 10px auto;
+                font-size: 1em;
+            }
+            
+            .icon {
+                width: 18px;
+                height: 18px;
+                margin-right: 10px;
+            }
+            
+            .link-description {
+                font-family: 'Vulf Mono', 'Courier New', monospace;
+                font-size: 12px;
+            }
+            
+            .music-row {
+                gap: 12px;
+                width: 90%;
+            }
+            
+            .music-link {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .music-icon {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .newsletter-form {
+                width: 90%;
+                padding: 12px;
+            }
+            
+            .newsletter-form input[type="email"] {
+                width: calc(100% - 20px);
+                max-width: 280px;
+                padding: 12px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .newsletter-form input[type="submit"] {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .singles-image {
+                width: 160px;
+                margin: 10px auto;
+            }
+            
+            
+            .footer {
+                margin-top: 25px;
+                font-size: 16px;
+            }
+            
+            /* Embedded content responsive */
+            iframe {
+                border-radius: 4px;
+            }
         }
         
-        .emoji-arrow {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            margin-left: 40px;
-            font-size: 24px;
-            animation: float 3s ease-in-out infinite;
-            z-index: 10;
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+                letter-spacing: 0.5px;
+                word-wrap: break-word;
+            }
+            
+            h2 {
+                font-size: 1.1em;
+            }
+            
+            .link-item {
+                width: 95%;
+                padding: 14px 16px;
+                font-size: 0.95em;
+            }
+            
+            .music-row {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .music-link {
+                width: 42px;
+                height: 42px;
+            }
+            
+            .newsletter-form {
+                width: 95%;
+                padding: 10px;
+            }
+            
+            .newsletter-form input[type="email"] {
+                width: calc(100% - 10px);
+                margin: 10px 0;
+            }
+            
+            .singles-image {
+                width: 140px;
+            }
+            
+            
+            /* Stack content sections with better spacing */
+            div[style*="margin: 15px auto"] {
+                margin: 20px auto !important;
+                width: 95% !important;
+            }
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
-            50% { transform: translateY(-10px) rotate(-5deg); }
+        /* Landscape phone optimization */
+        @media (max-width: 768px) and (orientation: landscape) {
+            h1 {
+                font-size: 2.5em;
+            }
+            
+            .music-row {
+                gap: 15px;
+            }
+            
         }
         
-        @keyframes float-arrow {
-            0%, 100% { transform: translateY(0) rotate(225deg) skew(15deg, 15deg); }
-            50% { transform: translateY(-5px) rotate(225deg) skew(15deg, 15deg); }
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .link-item {
+                padding: 16px 18px;
+                margin: 12px auto;
+            }
+            
+            .music-link {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .newsletter-form input[type="submit"] {
+                padding: 14px 22px;
+            }
         }
     </style>
 </head>
@@ -258,8 +459,6 @@
         <a href="#" id="randomSongLink">
             <img src="LogoWhite.png" alt="Dave Hawkins Logo">
         </a>
-        <div class="jump-text">jump through time</div>
-        <div class="emoji-arrow">⬅️</div>
     </div>
     
     <script>
@@ -326,7 +525,7 @@
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path fill="currentColor" d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/>
             </svg>
-            NEWSLETTER <span class="link-description">(archive)</span>
+            BLOG <span class="link-description">(newsletter archive)</span>
         </a>
         <a href="https://store.iamdavehawkins.com" class="link-item" target="_blank">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -379,7 +578,7 @@
     <div class="divider"></div>
     
     <div style="margin: 15px auto; width: 80%; max-width: 400px;">
-        <h3 style="color: #CCCCCC; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px;">LATEST RELEASES</h3>
+        <h3>LATEST RELEASES</h3>
         <iframe style="border: 0; width: 100%; height: 42px; margin-bottom: 10px;" src="https://bandcamp.com/EmbeddedPlayer/album=2166115709/size=small/bgcol=111111/linkcol=ffffff/transparent=true/" seamless><a href="https://iamdavehawkins.bandcamp.com/album/wool-fur-steel-ash">Wool &amp; Fur (Steel &amp; Ash) by Dave Hawkins</a></iframe>
         <iframe style="border: 0; width: 100%; height: 42px; margin-bottom: 10px;" src="https://bandcamp.com/EmbeddedPlayer/track=3926958653/size=small/bgcol=111111/linkcol=ffffff/transparent=true/" seamless><a href="https://iamdavehawkins.bandcamp.com/track/bones">Bones by Dave Hawkins</a></iframe>
         <iframe style="border: 0; width: 100%; height: 42px; margin-bottom: 10px;" src="https://bandcamp.com/EmbeddedPlayer/track=1124132180/size=small/bgcol=111111/linkcol=ffffff/transparent=true/" seamless><a href="https://iamdavehawkins.bandcamp.com/track/santa-fe">Santa Fe by Dave Hawkins</a></iframe>
@@ -389,15 +588,15 @@
     <div class="divider"></div>
     
     <div style="margin: 15px auto; width: 80%; max-width: 400px;">
-        <h3 style="color: #CCCCCC; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px;">PLAYLIST</h3>
-        <p style="color: #A89078; font-size: 12px; margin-bottom: 15px; text-align: center;">Tap the ➕ to be the first to hear new songs when they're released!</p>
+        <h3>PLAYLIST</h3>
+        <p style="color: #9B4A34; font-size: 15px; margin-bottom: 5px; text-align: center;">Tap the ➕ to be the first to hear new songs when they're released!</p>
         <iframe style="border-radius: 0; border: 0; width: 100%; height: 380px;" src="https://open.spotify.com/embed/playlist/57yZolIWjYnx2j8qVNhbcm?utm_source=generator&theme=0" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
     
     <div class="divider"></div>
     
     <div style="margin: 15px auto; width: 80%; max-width: 400px;">
-        <h3 style="color: #CCCCCC; font-size: 14px; letter-spacing: 2px; margin-bottom: 10px;">MUSIC VIDEOS</h3>
+        <h3>MUSIC VIDEOS</h3>
         <div style="margin-bottom: 15px;">
             <iframe style="border: 0; width: 100%;" height="225" src="https://www.youtube.com/embed/Y7pT_aJnpMU?si=u_Q0wc_EHuTl27YM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
