@@ -45,6 +45,15 @@
             font-style: italic;
             font-display: swap;
         }
+        
+        @font-face {
+            font-family: 'Obviously Compressed';
+            src: url('../fonts/Obviously-CompressedMedium.woff2') format('woff2'),
+                 url('https://cdn.iamdavehawkins.com/Obviously-CompressedMedium.woff2') format('woff2');
+            font-weight: 500;
+            font-style: normal;
+            font-display: swap;
+        }
 
         * {
             box-sizing: border-box;
@@ -305,13 +314,6 @@
             opacity: 0.8;
         }
         
-        .singles-image {
-            width: 200px;
-            height: auto;
-            margin: 3px auto;
-            display: block;
-        }
-        
         /* Mobile-First Responsive Design */
         @media (max-width: 768px) {
             body {
@@ -388,12 +390,6 @@
                 font-size: 14px;
             }
             
-            .singles-image {
-                width: 160px;
-                margin: 10px auto;
-            }
-            
-            
             .footer {
                 margin-top: 25px;
                 font-size: 16px;
@@ -448,11 +444,6 @@
                 margin: 10px 0;
             }
             
-            .singles-image {
-                width: 140px;
-            }
-            
-            
             /* Stack content sections with better spacing */
             div[style*="margin: 15px auto"] {
                 margin: 20px auto !important;
@@ -486,6 +477,271 @@
             
             .newsletter-form input[type="submit"] {
                 padding: 14px 22px;
+            }
+        }
+        
+        /* Bio section */
+        .bio-section {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+        }
+        
+        .bio-details {
+            border: 1px solid var(--color-secondary);
+            border-radius: 8px;
+            background-color: rgba(79, 106, 137, 0.1);
+        }
+        
+        .bio-summary {
+            padding: 12px 18px;
+            cursor: pointer;
+            list-style: none;
+            font-family: 'Degular Text', Georgia, serif;
+            font-size: 1em;
+            color: var(--color-paper);
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bio-summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .bio-summary::before {
+            content: '▶';
+            font-size: 0.8em;
+            color: var(--color-accent);
+            transition: transform 0.2s ease;
+        }
+        
+        .bio-details[open] .bio-summary::before {
+            transform: rotate(90deg);
+        }
+        
+        .bio-summary:hover {
+            color: var(--color-accent);
+        }
+        
+        .bio-summary:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+        
+        .bio-content {
+            padding: 0 18px 16px 18px;
+            font-family: 'Vulf Mono', 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.7;
+            color: var(--color-paper);
+            font-weight: 300;
+            font-style: italic;
+            text-align: left;
+        }
+        
+        .bio-content p {
+            margin: 0 0 14px 0;
+        }
+        
+        .bio-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .bio-section {
+                width: 90%;
+            }
+            
+            .bio-summary {
+                font-size: 0.95em;
+                padding: 12px 16px;
+            }
+            
+            .bio-content {
+                font-size: 0.85em;
+                padding: 0 16px 14px 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .bio-section {
+                width: 95%;
+            }
+            
+            .bio-content {
+                font-size: 0.82em;
+            }
+        }
+        
+        /* Featured Bandcamp EP Section */
+        .featured-ep {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #7a3626 100%);
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-ep::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--color-accent), var(--color-primary), var(--color-accent));
+            border-radius: 12px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .featured-ep:hover::before {
+            opacity: 0.3;
+        }
+        
+        .ep-badge {
+            font-family: 'Degular Text', Georgia, serif;
+            font-size: 0.8em;
+            color: var(--color-charcoal);
+            background-color: var(--color-accent);
+            padding: 5px 14px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .ep-cover {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 16px;
+            border-radius: 8px;
+            border: 2px solid var(--color-paper);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: block;
+        }
+        
+        .ep-title {
+            font-family: 'Compadre Extended', Georgia, serif;
+            font-size: 2em;
+            color: var(--color-paper);
+            margin: 0 0 8px 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .ep-subtitle {
+            font-family: 'Degular Text', Georgia, serif;
+            font-size: 0.95em;
+            color: var(--color-paper);
+            margin: 0 0 16px 0;
+            opacity: 0.9;
+        }
+        
+        .bandcamp-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            background-color: var(--color-charcoal);
+            border: 2px solid var(--color-paper);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--color-paper);
+            font-family: 'Degular Text', Georgia, serif;
+            font-size: 1.15em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .bandcamp-cta:hover {
+            background-color: var(--color-accent);
+            color: var(--color-charcoal);
+            border-color: var(--color-charcoal);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(216, 163, 74, 0.4);
+        }
+        
+        .bandcamp-cta:focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+        
+        .bandcamp-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+        
+        .ep-meta {
+            font-family: 'Vulf Mono', 'Courier New', monospace;
+            font-size: 0.8em;
+            color: var(--color-paper);
+            margin-top: 12px;
+            text-align: center;
+            font-style: italic;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .featured-ep {
+                width: 90%;
+                padding: 18px;
+            }
+            
+            .ep-cover {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .ep-title {
+                font-size: 1.7em;
+            }
+            
+            .bandcamp-cta {
+                font-size: 1.05em;
+                padding: 14px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .featured-ep {
+                width: 95%;
+                padding: 16px;
+            }
+            
+            .ep-cover {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .ep-title {
+                font-size: 1.5em;
+                letter-spacing: 1px;
+            }
+            
+            .ep-subtitle {
+                font-size: 0.9em;
+            }
+            
+            .bandcamp-cta {
+                font-size: 1em;
+                padding: 12px 18px;
             }
         }
     </style>
@@ -590,9 +846,21 @@
         });
     </script>
     <h1>DAVE HAWKINS</h1>
-    <h2>Bad jokes, catchy melodies. Denver, CO</h2>
+    <h2>Songs for when the world won’t stop buzzing. Denver, CO</h2>
     
-    <img src="All Singles.png" alt="All Singles" class="singles-image">
+    <div class="featured-ep">
+        <div class="ep-badge">NEW EP</div>
+        <img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive EP Album Cover" class="ep-cover">
+        <h2 class="ep-title">HALF ALIVE</h2>
+        <p class="ep-subtitle">Stream, download, or buy on Bandcamp</p>
+        <a href="https://iamdavehawkins.bandcamp.com/album/half-alive-ep" class="bandcamp-cta" target="_blank" rel="noopener">
+            <svg class="bandcamp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/>
+            </svg>
+            Listen on Bandcamp
+        </a>
+        <div class="ep-meta">full EP available for streaming & purchase</div>
+    </div>
     
     <div class="divider"></div>
 
@@ -609,6 +877,19 @@
           <input type="submit" value="SUBSCRIBE" />
           <div class="newsletter-microcopy">get notified of new releases + occasional musings</div>
         </form>
+    </div>
+    
+    <div class="bio-section">
+        <details class="bio-details">
+            <summary class="bio-summary">about</summary>
+            <div class="bio-content">
+                <p>Dave Hawkins writes songs about trying to stay present in a world that won't stop moving. From his basement in Denver, he blends indie rock, synth textures, and quiet reflection into something steady and human.</p>
+                
+                <p>His new EP Half Alive looks at the loops we get stuck in and the moments that break us out. From the constant hum of screens to the quiet clarity that follows when they finally go dark. Written between early mornings and late nights at home, the songs find meaning in the blur: small flashes of humor, hope, and resistance inside everyday life.</p>
+                
+                <p>It's music for the middle ground, not quite optimistic, not quite cynical, just honest about how strange it feels to be alive right now.</p>
+            </div>
+        </details>
     </div>
     
     <div class="music-row">
@@ -630,12 +911,6 @@
     </div>
     
     <div class="links">
-        <a href="https://iamdavehawkins.bandcamp.com/" class="link-item" target="_blank">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M0 18.75l7.437-13.5H24l-7.438 13.5H0z"/>
-            </svg>
-            BANDCAMP <span class="link-description">(buy music)</span>
-        </a>
         <a href="https://buttondown.com/iamdavehawkins/archive/" class="link-item" target="_blank">
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path fill="currentColor" d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/>
