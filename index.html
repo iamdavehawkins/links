@@ -822,6 +822,50 @@
           .song-wall{ grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); gap:12px; }
           .song-title{ font-size:.9rem }
         }
+        /* Photo polaroids - same aesthetic, no CTAs */
+        .photo-scatter{
+          width:100%; max-width:720px; margin: 18px auto;
+          display:flex; gap:16px; flex-wrap:wrap; justify-content:center; align-items:center;
+        }
+        .photo-card{
+          background: var(--paper);
+          border: 1px solid var(--denim);
+          border-radius: 6px;
+          padding: 10px 10px 14px;
+          box-shadow: 0 1px 0 rgba(0,0,0,.3), 0 18px 30px rgba(0,0,0,.15);
+          position: relative;
+          isolation:isolate;
+          max-width: 280px;
+          flex: 1 1 auto;
+        }
+        .photo-card::after{
+          content:""; position:absolute; inset:0; pointer-events:none;
+          background-image: url('https://cdn.iamdavehawkins.com/textures/paper-grain-02.png');
+          opacity:.08; mix-blend-mode: multiply; border-radius:6px;
+        }
+        .photo-card img{
+          width:100%; display:block; border:1px solid var(--denim); border-radius:4px;
+          filter: saturate(.92) contrast(.98); background: #111;
+        }
+        .photo-card.wide{
+          max-width: 420px;
+        }
+        .photo-card.portrait{
+          max-width: 200px;
+        }
+        .photo-pin{
+          position:absolute; top:8px; left:12px; width:10px; height:10px; border-radius:50%;
+          background: var(--mustard); box-shadow: inset 0 -1px 0 rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.3);
+          z-index:1;
+        }
+        .photo-card.tilt-left{ transform: rotate(-1.8deg); }
+        .photo-card.tilt-right{ transform: rotate(1.5deg); }
+        .photo-card.tilt-slight-left{ transform: rotate(-0.9deg); }
+        @media (max-width:480px){
+          .photo-scatter{ gap:12px; }
+          .photo-card{ max-width:240px; }
+          .photo-card.wide{ max-width:100%; }
+        }
     </style>
 </head>
 <body>
@@ -881,16 +925,17 @@
     
     <div class="bio-section">
         <details class="bio-details">
-            <summary class="bio-summary">about</summary>
+            <summary class="bio-summary">about dave</summary>
             <div class="bio-content">
-                <p>Dave Hawkins writes songs about trying to stay present in a world that won't stop moving. From his basement in Denver, he blends indie rock, synth textures, and quiet reflection into something steady and human.</p>
+                <p>Dave Hawkins writes songs meant for slowing down in a fast-moving world. Based in Denver, operating out of a home studio, he blends his years of experience playing classical piano with synth textures and indie guitar rock to create something reflective of where we're at.</p>
                 
-                <p>His new EP Half Alive looks at the loops we get stuck in and the moments that break us out. From the constant hum of screens to the quiet clarity that follows when they finally go dark. Written between early mornings and late nights at home, the songs find meaning in the blur: small flashes of humor, hope, and resistance inside everyday life.</p>
+                <p>His new EP Half Alive looks at the loops we get stuck in and the moments that break us out. From the hum of screens to the clarity that follows when they finally go dark. Written between the stresses of a full time job, raising kids, in early morning or late nights, the songs find meaning in the blur: small flashes of humor, hope, and resistance inside everyday life.</p>
                 
-                <p>It's music for the middle ground, not quite optimistic, not quite cynical, just honest about how strange it feels to be alive right now.</p>
+                <p>At the end of the day - it's honest music about just how strange it feels to be alive right now.</p>
             </div>
         </details>
     </div>
+    
     
     <div class="music-row">
         <a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa?si=pdKZe4eWQu2tCU04vdqSgw" class="music-link" title="Spotify" aria-label="Listen on Spotify" target="_blank">
@@ -908,6 +953,13 @@
                 <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 13.5v-7l6 3.5-6 3.5z"/>
             </svg>
         </a>
+    </div>
+    <!-- Photo scatter 1: EP covers -->
+    <div class="photo-scatter">
+        <figure class="photo-card tilt-left">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <img src="EP Images/Half Alive EP - Album Cover 2.png" alt="Half Alive EP" loading="lazy">
+        </figure>
     </div>
     
     <div class="links">
@@ -964,8 +1016,23 @@
             35MM FILM <span class="link-description">(hobby)</span>
         </a>
     </div>
+
+    <div class="photo-scatter">
+        <figure class="photo-card tilt-right">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <img src="EP Images/Half Alive EP - Album Cover 4.png" alt="Half Alive EP" loading="lazy">
+        </figure>
+    </div>
     
     <div class="divider"></div>
+    
+    <!-- Photo scatter 2: Banner shots -->
+    <div class="photo-scatter">
+        <figure class="photo-card wide tilt-slight-left">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <img src="EP Images/Spotify Banner 1 lowres.png" alt="Dave Hawkins" loading="lazy">
+        </figure>
+    </div>
     
     <div style="margin: 15px auto; width: 80%; max-width: 400px;">
         <h3>LATEST RELEASES</h3>
@@ -984,6 +1051,18 @@
     </div>
     
     <div class="divider"></div>
+    
+    <!-- Photo scatter 3: Mix of images -->
+    <div class="photo-scatter">
+        <figure class="photo-card portrait tilt-left">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <img src="EP Images/Profile Pic 1.JPEG" alt="Dave Hawkins" loading="lazy">
+        </figure>
+        <figure class="photo-card tilt-right">
+            <span class="photo-pin" aria-hidden="true"></span>
+            <img src="EP Images/Half Alive EP - Album Cover 5.png" alt="Half Alive EP" loading="lazy">
+        </figure>
+    </div>
     
     <div style="margin: 15px auto; width: 80%; max-width: 400px;">
         <h3>MUSIC VIDEOS</h3>
