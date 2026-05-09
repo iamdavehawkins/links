@@ -52,6 +52,11 @@
         .thumbs img { width: 50px; height: 50px; object-fit: cover; margin: 0 4px 4px 0; border: 1px solid #ccc; cursor: pointer; vertical-align: top; }
         .thumbs img:hover { border-color: #666; }
         .thumbs img.active { border: 2px solid #00c; }
+        .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; margin: 10px 0; }
+        .song-tile { text-align: center; text-decoration: none; }
+        .song-tile img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid #ccc; display: block; }
+        .song-tile img:hover { border-color: #00c; }
+        .song-tile span { display: block; font-size: 10px; margin-top: 3px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="99efd3af-3c2e-490e-adc0-aa7a12c5f68a"></script>
 </head>
@@ -123,18 +128,52 @@
 </ul>
 
 <h3>song pages</h3>
-<ul>
-    <li><a href="https://goodbehavior.iamdavehawkins.com/" target="_blank" rel="noopener">good behavior</a></li>
-    <li><a href="https://bones.iamdavehawkins.com/" target="_blank" rel="noopener">bones</a></li>
-    <li><a href="https://colorsoftheleaves.iamdavehawkins.com/" target="_blank" rel="noopener">colors of the leaves</a></li>
-    <li><a href="https://strawberrysummer.iamdavehawkins.com/" target="_blank" rel="noopener">strawberry summer</a></li>
-    <li><a href="https://santafe.iamdavehawkins.com/" target="_blank" rel="noopener">santa fe</a></li>
-    <li><a href="https://woolandfur.iamdavehawkins.com/" target="_blank" rel="noopener">wool & fur</a></li>
-    <li><a href="https://withlove.iamdavehawkins.com/" target="_blank" rel="noopener">with love</a></li>
-    <li><a href="https://aloop.iamdavehawkins.com/" target="_blank" rel="noopener">a loop</a></li>
-    <li><a href="https://flicker.iamdavehawkins.com/" target="_blank" rel="noopener">flicker</a></li>
-    <li><a href="https://howmanymoredecembers.iamdavehawkins.com/" target="_blank" rel="noopener">how many more decembers</a></li>
-</ul>
+<div class="song-grid">
+    <a href="https://itsalongdrivetochristmas.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Its a Long Drive to Christmas - Album Art.png" alt="It's a Long Drive to Christmas">
+        <span>long drive to christmas</span>
+    </a>
+    <a href="https://goodbehavior.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Good Behavior - Album Cover.png" alt="Good Behavior">
+        <span>good behavior</span>
+    </a>
+    <a href="https://bones.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Bones - Dave Hawkins - Album Art.png" alt="Bones">
+        <span>bones</span>
+    </a>
+    <a href="https://colorsoftheleaves.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Colors Of The Leaves - Album Art.jpg" alt="Colors of the Leaves">
+        <span>colors of the leaves</span>
+    </a>
+    <a href="https://strawberrysummer.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Strawberry Summer - Album Art Simple.jpg" alt="Strawberry Summer">
+        <span>strawberry summer</span>
+    </a>
+    <a href="https://santafe.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Santa Fe - Album Art.jpg" alt="Santa Fe">
+        <span>santa fe</span>
+    </a>
+    <a href="https://woolandfur.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Wool & Fur - Album Cover.png" alt="Wool & Fur">
+        <span>wool & fur</span>
+    </a>
+    <a href="https://withlove.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/With Love - Album Cover.png" alt="With Love">
+        <span>with love</span>
+    </a>
+    <a href="https://aloop.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/A Loop - Album Cover.jpg" alt="A Loop">
+        <span>a loop</span>
+    </a>
+    <a href="https://flicker.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/Flicker - Album Cover.png" alt="Flicker">
+        <span>flicker</span>
+    </a>
+    <a href="https://howmanymoredecembers.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
+        <img src="album art/How Many More Decembers - Album Cover.png" alt="How Many More Decembers">
+        <span>how many more decembers</span>
+    </a>
+</div>
 
 <hr>
 
@@ -186,7 +225,7 @@ function changeImage(direction) {
 
 <div class="footer">
     made with love in denver, co<br>
-    last updated: april 2026
+    last updated: may 2026
 </div>
 
 </body>
