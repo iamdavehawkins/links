@@ -29,18 +29,34 @@
         a:visited { color: #551a8b; }
         h1 { font-size: 16px; margin: 10px 0 3px 0; }
         h2 { font-size: 13px; font-weight: normal; color: #666; margin: 0 0 10px 0; }
-        h3 { font-size: 12px; margin: 15px 0 5px 0; background: #eee; padding: 3px 5px; }
+        h3 { font-size: 12px; margin: 15px 0 5px 0; background: #eee; padding: 3px 5px; border: 1px solid #ccc; }
+        h3.muted { background: transparent; border: none; color: #999; font-style: italic; }
         hr { border: none; border-top: 1px solid #ccc; margin: 10px 0; }
         ul { list-style: none; padding: 0; margin: 5px 0; }
         li { padding: 1px 0; }
         img { max-width: 120px; }
         details { margin: 10px 0; font-size: 12px; }
         summary { cursor: pointer; }
-        form { margin: 10px 0; padding: 8px; background: #eee; font-size: 12px; }
-        input[type="email"] { padding: 2px; font-size: 12px; }
-        input[type="submit"] { padding: 2px 8px; font-size: 11px; }
+        input[type="email"] { padding: 4px 6px; font-size: 12px; width: 140px; }
+        input[type="submit"] { padding: 4px 12px; font-size: 11px; cursor: pointer; }
         .footer { font-size: 10px; color: #666; margin-top: 15px; }
         .small { font-size: 11px; color: #666; }
+        
+        /* Hero newsletter panel */
+        .panel { border: 1px solid #333; padding: 12px; margin: 10px 0; background: #fff; }
+        .panel-hero { border: 2px solid #333; background: #fffef5; }
+        .panel-title { font-weight: bold; font-size: 13px; margin: 0 0 8px 0; }
+        .panel-subtitle { font-size: 11px; color: #666; margin: 0 0 10px 0; font-style: italic; }
+        .panel form { margin: 0; padding: 0; background: none; }
+        
+        /* Section panels */
+        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+        .section-box { border: 1px solid #ccc; padding: 10px; background: #fff; }
+        .section-box h4 { font-size: 11px; margin: 0 0 6px 0; color: #666; text-transform: uppercase; }
+        .section-box ul { margin: 0; }
+        .section-box li { font-size: 12px; }
+        
+        /* Gallery */
         .gallery { margin: 10px 0; }
         .gallery-main { position: relative; margin-bottom: 8px; }
         .gallery-main img { max-width: 600px; width: 100%; border: 1px solid #ccc; display: block; }
@@ -52,6 +68,8 @@
         .thumbs img { width: 50px; height: 50px; object-fit: cover; margin: 0 4px 4px 0; border: 1px solid #ccc; cursor: pointer; vertical-align: top; }
         .thumbs img:hover { border-color: #666; }
         .thumbs img.active { border: 2px solid #00c; }
+        
+        /* Song carousel */
         .song-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding: 10px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
         .song-carousel::-webkit-scrollbar { display: none; }
         .song-card { flex: 0 0 85%; max-width: 340px; scroll-snap-align: center; background: #fff; border: 2px solid #333; padding: 14px; box-shadow: 4px 4px 0 rgba(0,0,0,0.15); }
@@ -75,23 +93,24 @@
 <h1>dave hawkins</h1>
 <h2>songs for when the world won't stop buzzing. denver, co.</h2>
 
+<!-- HERO: Newsletter -->
+<div class="panel panel-hero">
+    <p class="panel-title">get on the list</p>
+    <p class="panel-subtitle">No social media algorithms. Just music direct to your inbox.</p>
+    <form action="https://buttondown.com/api/emails/embed-subscribe/iamdavehawkins" method="post" target="popupwindow" onsubmit="window.open('https://newsletter.iamdavehawkins.com', 'popupwindow')">
+        <input type="email" name="email" placeholder="your@email.com">
+        <input type="submit" value="join the list">
+    </form>
+</div>
+
 <hr>
 
-<h3>new ep: half alive</h3>
+<!-- LATEST MUSIC -->
+<h3>latest release: half alive ep</h3>
 <img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive EP">
 <br><a href="https://halfaliveep.iamdavehawkins.com" target="_blank" rel="noopener">► listen / download (free)</a>
 <p style="font-style: italic; font-size: 12px; color: #666; margin: 8px 0; border-left: 2px solid #9B4A34; padding-left: 8px;">"It's fully alive. It's always moving, shimmering. You must keep listening."<br><span style="font-size: 10px;">— <a href="https://www.threads.com/@jack.jose.5/post/DR-pypEDmEk" target="_blank" rel="noopener" style="color: #999;">Jack Jose</a></span></p>
 <p style="font-style: italic; font-size: 12px; color: #666; margin: 8px 0; border-left: 2px solid #9B4A34; padding-left: 8px;">"The cumulative effect of it all feels like some sort of a spell is being cast."<br><span style="font-size: 10px;">— <a href="https://www.grooveartuniverse.com/davehawkins" target="_blank" rel="noopener" style="color: #999;">Groove Art Universe</a></span></p>
-
-<hr>
-
-<h3>newsletter</h3>
-<form action="https://buttondown.com/api/emails/embed-subscribe/iamdavehawkins" method="post" target="popupwindow" onsubmit="window.open('https://newsletter.iamdavehawkins.com', 'popupwindow')">
-    <input type="email" name="email" placeholder="your@email.com">
-    <input type="submit" value="subscribe">
-    <br><span class="small">get notified of new releases</span>
-    <br><span class="small">and more importantly, connect off social media</span>
-</form>
 
 <details>
     <summary>about</summary>
@@ -101,42 +120,35 @@
 
 <hr>
 
-<h3>buy from me</h3>
-<ul>
-    <li><a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a> - buy and/or stream</li>
-</ul>
+<!-- STORE / SUPPORT -->
+<div class="section-grid">
+    <div class="section-box">
+        <h4>buy from me</h4>
+        <ul>
+            <li><a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a> <span class="small">— best way to support</span></li>
+            <li><a href="https://store.iamdavehawkins.com" target="_blank" rel="noopener">merch</a></li>
+        </ul>
+    </div>
+    <div class="section-box">
+        <h4>stream from a billionaire</h4>
+        <ul>
+            <li><a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa" target="_blank" rel="noopener">spotify</a></li>
+            <li><a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" target="_blank" rel="noopener">apple music</a></li>
+            <li><a href="https://music.youtube.com/channel/UC-IbKKTFITC-p_5rXqGvs6g" target="_blank" rel="noopener">youtube music</a></li>
+        </ul>
+    </div>
+</div>
 
-<h3>stream from a billionaire</h3>
-<ul>
-    <li><a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa" target="_blank" rel="noopener">spotify</a></li>
-    <li><a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" target="_blank" rel="noopener">apple music</a></li>
-    <li><a href="https://music.youtube.com/channel/UC-IbKKTFITC-p_5rXqGvs6g" target="_blank" rel="noopener">youtube music</a></li>
-</ul>
+<hr>
 
-<h3>links</h3>
+<!-- ARCHIVES / LINKS -->
+<h3>archives</h3>
 <ul>
-    <li><a href="https://unstream.stream/a/dave-hawkins" target="_blank" rel="noopener">unstream</a> - artist page</li>
     <li><a href="https://buttondown.com/iamdavehawkins/archive/" target="_blank" rel="noopener">blog</a> - newsletter archive</li>
     <li><a href="https://nicethings.iamdavehawkins.com" target="_blank" rel="noopener">nice things</a> - press & reviews</li>
-    <li><a href="https://store.iamdavehawkins.com" target="_blank" rel="noopener">merch</a> - stickers</li>
     <li><a href="https://www.youtube.com/@iamdavehawkins" target="_blank" rel="noopener">youtube</a> - covers + music videos</li>
     <li><a href="https://mademecry.iamdavehawkins.com" target="_blank" rel="noopener">songs that made me cry</a> - personal archive</li>
-</ul>
-
-<h3>social</h3>
-<ul>
-    <li><a href="https://www.threads.net/@iamdavehawkins" target="_blank" rel="noopener">threads</a> - most active</li>
-    <li><a href="https://www.instagram.com/iamdavehawkins" target="_blank" rel="noopener">instagram</a></li>
-    <li><a href="https://www.tiktok.com/@iamdavehawkins" target="_blank" rel="noopener">tiktok</a></li>
-    <li><a href="https://www.linkedin.com/in/iamdavehawkins/" target="_blank" rel="noopener">linkedin</a></li>
-</ul>
-
-<h3>other projects</h3>
-<ul>
-    <li><a href="https://tracktunes.app" target="_blank" rel="noopener">tracktunes</a> - strava + music</li>
-    <li><a href="https://photography.iamdavehawkins.com" target="_blank" rel="noopener">35mm film</a> - hobby</li>
-    <li><a href="https://bandtimeline.com" target="_blank" rel="noopener">band timeline</a> - wikipedia-style band timelines</li>
-    <li><a href="https://webringthemusic.info" target="_blank" rel="noopener">webringthemusic</a> - an indie music webring</li>
+    <li><a href="https://unstream.stream/a/dave-hawkins" target="_blank" rel="noopener">unstream</a> - artist page</li>
 </ul>
 
 <h3>song pages</h3>
@@ -254,6 +266,28 @@
     </div>
     <div class="song-card">
         <div class="song-card-header">
+            <img src="https://richmondairportgroundcrew.iamdavehawkins.com/album-art.png" alt="Richmond Airport Ground Crew">
+            <div class="song-card-info">
+                <p class="song-card-title">Richmond Airport Ground Crew</p>
+                <p class="song-card-meta">2024 · 2:53</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"We're stuck in this tube without you"</p>
+        <a href="https://richmondairportgroundcrew.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="https://theaspen.iamdavehawkins.com/The%20Aspen%20-%20Album%20Art%20Simple.jpg" alt="The Aspen">
+            <div class="song-card-info">
+                <p class="song-card-title">The Aspen</p>
+                <p class="song-card-meta">2023 · 2:45</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"You know they're all connected, the roots all intertwined"</p>
+        <a href="https://theaspen.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
             <img src="album art/Strawberry Summer - Album Art Simple.jpg" alt="Strawberry Summer">
             <div class="song-card-info">
                 <p class="song-card-title">Strawberry Summer</p>
@@ -262,6 +296,50 @@
         </div>
         <p class="song-card-lyric">"I wanna be in a strawberry summer with you / I wanna be in the sun"</p>
         <a href="https://strawberrysummer.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="https://upahead.iamdavehawkins.com/Up%20Ahead%20-%20Album%20Art.png" alt="Up Ahead">
+            <div class="song-card-info">
+                <p class="song-card-title">Up Ahead</p>
+                <p class="song-card-meta">2023 · 2:13</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"So let's get going and see what's up ahead"</p>
+        <a href="https://upahead.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="https://dustyrecord.iamdavehawkins.com/Dusty%20Record%20-%20Album%20Art%20New.jpg" alt="Dusty Record">
+            <div class="song-card-info">
+                <p class="song-card-title">Dusty Record</p>
+                <p class="song-card-meta">2022 · 2:43</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"Well I found a dusty record sittin' on a shelf / Pieces of you still follow me"</p>
+        <a href="https://dustyrecord.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="https://stairsinwhite.iamdavehawkins.com/Stairs%20In%20White%20-%20Album%20Art.png" alt="Stairs In White">
+            <div class="song-card-info">
+                <p class="song-card-title">Stairs In White</p>
+                <p class="song-card-meta">2022 · 3:01</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"On my return to stardust, to be born again."</p>
+        <a href="https://stairsinwhite.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="https://thedayyounevercame.iamdavehawkins.com/the%20day%20you%20never%20came%20-%20New%20Album%20Art.png" alt="the day you never came">
+            <div class="song-card-info">
+                <p class="song-card-title">the day you never came</p>
+                <p class="song-card-meta">2022 · 2:19</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"I was standing there, in our normal place."</p>
+        <a href="https://thedayyounevercame.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
     </div>
 </div>
 <div class="carousel-dots" id="songDots"></div>
@@ -341,6 +419,26 @@ function changeImage(direction) {
     setImage(currentIndex);
 }
 </script>
+
+<hr>
+
+<h3>other projects</h3>
+<ul>
+    <li><a href="https://tracktunes.app" target="_blank" rel="noopener">tracktunes</a> - strava + music</li>
+    <li><a href="https://photography.iamdavehawkins.com" target="_blank" rel="noopener">35mm film</a> - hobby</li>
+    <li><a href="https://bandtimeline.com" target="_blank" rel="noopener">band timeline</a> - wikipedia-style band timelines</li>
+    <li><a href="https://webringthemusic.info" target="_blank" rel="noopener">webringthemusic</a> - an indie music webring</li>
+</ul>
+
+<hr>
+
+<h3 class="muted">unfortunate utilities</h3>
+<ul>
+    <li><a href="https://www.threads.net/@iamdavehawkins" target="_blank" rel="noopener">threads</a></li>
+    <li><a href="https://www.instagram.com/iamdavehawkins" target="_blank" rel="noopener">instagram</a></li>
+    <li><a href="https://www.tiktok.com/@iamdavehawkins" target="_blank" rel="noopener">tiktok</a></li>
+    <li><a href="https://www.linkedin.com/in/iamdavehawkins/" target="_blank" rel="noopener">linkedin</a></li>
+</ul>
 
 <hr>
 
