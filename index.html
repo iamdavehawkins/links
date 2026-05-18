@@ -52,11 +52,21 @@
         .thumbs img { width: 50px; height: 50px; object-fit: cover; margin: 0 4px 4px 0; border: 1px solid #ccc; cursor: pointer; vertical-align: top; }
         .thumbs img:hover { border-color: #666; }
         .thumbs img.active { border: 2px solid #00c; }
-        .song-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; margin: 10px 0; }
-        .song-tile { text-align: center; text-decoration: none; }
-        .song-tile img { width: 100%; aspect-ratio: 1; object-fit: cover; border: 1px solid #ccc; display: block; }
-        .song-tile img:hover { border-color: #00c; }
-        .song-tile span { display: block; font-size: 10px; margin-top: 3px; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .song-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding: 10px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+        .song-carousel::-webkit-scrollbar { display: none; }
+        .song-card { flex: 0 0 85%; max-width: 340px; scroll-snap-align: center; background: #fff; border: 2px solid #333; padding: 14px; box-shadow: 4px 4px 0 rgba(0,0,0,0.15); }
+        .song-card-header { display: flex; gap: 12px; margin-bottom: 10px; }
+        .song-card img { width: 80px; height: 80px; object-fit: cover; border: 1px solid #333; flex-shrink: 0; }
+        .song-card-info { flex: 1; }
+        .song-card-title { font-weight: bold; font-size: 15px; margin: 0 0 4px 0; }
+        .song-card-meta { font-size: 11px; color: #666; margin: 0; }
+        .song-card-lyric { font-style: italic; font-size: 12px; color: #444; border-left: 2px solid #00c; padding-left: 10px; margin: 0 0 10px 0; line-height: 1.5; }
+        .song-card-link { display: inline-block; font-size: 11px; color: #00c; text-decoration: none; border: 1px solid #00c; padding: 4px 10px; }
+        .song-card-link:hover { background: #00c; color: #fff; }
+        .swipe-hint { font-size: 10px; color: #666; margin: 4px 0; }
+        .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+        .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; border: none; cursor: pointer; padding: 0; }
+        .carousel-dot.active { background: #00c; }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="99efd3af-3c2e-490e-adc0-aa7a12c5f68a"></script>
 </head>
@@ -128,52 +138,161 @@
 </ul>
 
 <h3>song pages</h3>
-<div class="song-grid">
-    <a href="https://itsalongdrivetochristmas.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Its a Long Drive to Christmas - Album Art.png" alt="It's a Long Drive to Christmas">
-        <span>long drive to christmas</span>
-    </a>
-    <a href="https://goodbehavior.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Good Behavior - Album Cover.png" alt="Good Behavior">
-        <span>good behavior</span>
-    </a>
-    <a href="https://bones.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Bones - Dave Hawkins - Album Art.png" alt="Bones">
-        <span>bones</span>
-    </a>
-    <a href="https://colorsoftheleaves.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Colors Of The Leaves - Album Art.jpg" alt="Colors of the Leaves">
-        <span>colors of the leaves</span>
-    </a>
-    <a href="https://strawberrysummer.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Strawberry Summer - Album Art Simple.jpg" alt="Strawberry Summer">
-        <span>strawberry summer</span>
-    </a>
-    <a href="https://santafe.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Santa Fe - Album Art.jpg" alt="Santa Fe">
-        <span>santa fe</span>
-    </a>
-    <a href="https://woolandfur.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Wool & Fur - Album Cover.png" alt="Wool & Fur">
-        <span>wool & fur</span>
-    </a>
-    <a href="https://withlove.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/With Love - Album Cover.png" alt="With Love">
-        <span>with love</span>
-    </a>
-    <a href="https://aloop.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/A Loop - Album Cover.jpg" alt="A Loop">
-        <span>a loop</span>
-    </a>
-    <a href="https://flicker.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/Flicker - Album Cover.png" alt="Flicker">
-        <span>flicker</span>
-    </a>
-    <a href="https://howmanymoredecembers.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-tile">
-        <img src="album art/How Many More Decembers - Album Cover.png" alt="How Many More Decembers">
-        <span>how many more decembers</span>
-    </a>
+<p class="swipe-hint">swipe for more →</p>
+<div class="song-carousel" id="songCarousel">
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Its a Long Drive to Christmas - Album Art.png" alt="It's a Long Drive to Christmas">
+            <div class="song-card-info">
+                <p class="song-card-title">It's a Long Drive to Christmas</p>
+                <p class="song-card-meta">2024 · 3:42</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"It's a long drive to Christmas, and every song that I listen to goes on and on and reminds me just how long, and I miss you"</p>
+        <a href="https://itsalongdrivetochristmas.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Good Behavior - Album Cover.png" alt="Good Behavior">
+            <div class="song-card-info">
+                <p class="song-card-title">Good Behavior</p>
+                <p class="song-card-meta">2024 · 3:18</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"We know what you did, and what you deserve / we know that you hid, who you really were / we know we were kids, when you did your worst"</p>
+        <a href="https://goodbehavior.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Bones - Dave Hawkins - Album Art.png" alt="Bones">
+            <div class="song-card-info">
+                <p class="song-card-title">Bones</p>
+                <p class="song-card-meta">2024 · 4:12</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"No you just don't know where all the bones are hid / Yeah I know you saw me with the shovel didn't ya dear"</p>
+        <a href="https://bones.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Colors Of The Leaves - Album Art.jpg" alt="Colors of the Leaves">
+            <div class="song-card-info">
+                <p class="song-card-title">Colors of the Leaves</p>
+                <p class="song-card-meta">2024 · 3:55</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"I would build a rainbow, I would calm the seas / and I would pull the stars from the sky and change the colors of the leaves"</p>
+        <a href="https://colorsoftheleaves.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Strawberry Summer - Album Art Simple.jpg" alt="Strawberry Summer">
+            <div class="song-card-info">
+                <p class="song-card-title">Strawberry Summer</p>
+                <p class="song-card-meta">2024 · 3:28</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"I wanna be in a strawberry summer with you / I wanna be in the sun"</p>
+        <a href="https://strawberrysummer.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Santa Fe - Album Art.jpg" alt="Santa Fe">
+            <div class="song-card-info">
+                <p class="song-card-title">Santa Fe</p>
+                <p class="song-card-meta">2023 · 4:05</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"Wrote you a letter from Santa Fe / Won't get to you until Saturday / Turns out I had a lot of stuff to say"</p>
+        <a href="https://santafe.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Wool & Fur - Album Cover.png" alt="Wool & Fur">
+            <div class="song-card-info">
+                <p class="song-card-title">Wool & Fur</p>
+                <p class="song-card-meta">2024 · 4:30</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"His empty flask, his broken ax, his coats of wool and fur"</p>
+        <a href="https://woolandfur.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/With Love - Album Cover.png" alt="With Love">
+            <div class="song-card-info">
+                <p class="song-card-title">With Love</p>
+                <p class="song-card-meta">2023 · 3:45</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"So just take your time, we'll be right outside / I will always wait for you"</p>
+        <a href="https://withlove.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/A Loop - Album Cover.jpg" alt="A Loop">
+            <div class="song-card-info">
+                <p class="song-card-title">A Loop</p>
+                <p class="song-card-meta">2023 · 3:52</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"Caught in a loop, all day, always / caught in a loop, no light, no way"</p>
+        <a href="https://aloop.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/Flicker - Album Cover.png" alt="Flicker">
+            <div class="song-card-info">
+                <p class="song-card-title">Flicker</p>
+                <p class="song-card-meta">2023 · 4:18</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"Not the end, not the arc / just a flicker in the dark"</p>
+        <a href="https://flicker.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
+    <div class="song-card">
+        <div class="song-card-header">
+            <img src="album art/How Many More Decembers - Album Cover.png" alt="How Many More Decembers">
+            <div class="song-card-info">
+                <p class="song-card-title">How Many More Decembers</p>
+                <p class="song-card-meta">2022 · 4:02</p>
+            </div>
+        </div>
+        <p class="song-card-lyric">"There's a few folks missing; it's got me thinking / how many more Decembers do we have"</p>
+        <a href="https://howmanymoredecembers.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
+    </div>
 </div>
+<div class="carousel-dots" id="songDots"></div>
+
+<script>
+(function() {
+    const carousel = document.getElementById('songCarousel');
+    const dotsContainer = document.getElementById('songDots');
+    const cards = carousel.querySelectorAll('.song-card');
+    
+    // Create dots
+    cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        dotsContainer.appendChild(dot);
+    });
+    
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    
+    // Update dots on scroll
+    let timeout;
+    carousel.addEventListener('scroll', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            const scrollLeft = carousel.scrollLeft;
+            const cardWidth = cards[0].offsetWidth + 16;
+            const index = Math.round(scrollLeft / cardWidth);
+            dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        }, 50);
+    });
+})();
+</script>
 
 <hr>
 
