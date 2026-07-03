@@ -113,6 +113,13 @@
         .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
         .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; border: none; cursor: pointer; padding: 0; }
         .carousel-dot.active { background: #00c; }
+
+        /* Webring */
+        .webring { border: 1px solid #ccc; background: #fff; padding: 8px 10px; margin: 5px 0; font-size: 12px; text-align: center; }
+        .webring a { color: #00c; text-decoration: none; }
+        .webring a:hover { text-decoration: underline; }
+        .webring .wr-label a { color: #666; }
+        .webring .wr-sep { color: #ccc; margin: 0 5px; }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="99efd3af-3c2e-490e-adc0-aa7a12c5f68a"></script>
 </head>
@@ -479,6 +486,41 @@ function changeImage(direction) {
     <li><a href="https://www.tiktok.com/@iamdavehawkins" target="_blank" rel="noopener">tiktok</a></li>
     <li><a href="https://www.linkedin.com/in/iamdavehawkins/" target="_blank" rel="noopener">linkedin</a></li>
 </ul>
+
+<hr>
+
+<h3>indie music webring</h3>
+<!-- WeBringTheMusic — custom nav on their public ring API, styled to match the page -->
+<div class="webring" id="webring">
+    <span class="wr-label"><a href="https://webringthemusic.info" target="_blank" rel="noopener">WeBringTheMusic</a></span>
+    <span class="wr-sep">|</span>
+    <a id="wr-prev" href="https://webringthemusic.info">← prev</a>
+    <span class="wr-sep">·</span>
+    <a id="wr-random" href="https://webringthemusic.info">random</a>
+    <span class="wr-sep">·</span>
+    <a id="wr-next" href="https://webringthemusic.info">next →</a>
+    <span class="wr-sep">|</span>
+    <a href="https://www.webringthemusic.info/directory" target="_blank" rel="noopener">directory</a>
+</div>
+<script>
+(function() {
+    var api = 'https://www.webringthemusic.info/api/ring-by-domain?domain=' + encodeURIComponent(window.location.hostname);
+    fetch(api)
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            function set(id, node) {
+                if (!node) return;
+                var el = document.getElementById(id);
+                el.href = node.website;
+                if (node.name) el.title = node.name;
+            }
+            set('wr-prev', d.prev);
+            set('wr-random', d.random);
+            set('wr-next', d.next);
+        })
+        .catch(function(e) { console.error('webring:', e); });
+})();
+</script>
 
 <hr>
 
