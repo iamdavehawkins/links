@@ -75,6 +75,8 @@
         .panel-hero { border: 2px solid #333; background: #fffef5; }
         .panel-title { font-weight: bold; font-size: 13px; margin: 0 0 8px 0; }
         .panel-subtitle { font-size: 11px; color: #666; margin: 0 0 10px 0; font-style: italic; }
+        .latest-issue { font-size: 11px; margin: 8px 0 0 0; }
+        .latest-issue .li-label { color: #666; }
         .panel form { margin: 0; padding: 0; background: none; }
         
         /* Section panels */
@@ -131,12 +133,35 @@
 <!-- HERO: Newsletter -->
 <div class="panel panel-hero">
     <p class="panel-title">join my email newsletter</p>
-    <p class="panel-subtitle">Social media companies suck, so let's stick together. Just music, straight to your inbox.</p>
+    <p class="panel-subtitle">Music shouldn't depend on an algorithm, so let's stick together and bypass the billionaire gatekeepers.</p>
     <form action="https://buttondown.com/api/emails/embed-subscribe/iamdavehawkins" method="post" target="popupwindow" onsubmit="window.open('https://newsletter.iamdavehawkins.com', 'popupwindow')">
         <input type="email" name="email" placeholder="your@email.com">
         <input type="submit" value="join the list">
     </form>
+    <!-- Latest issue — pulled live from the Buttondown archive RSS, hidden unless it loads -->
+    <p class="latest-issue" id="latest-issue" style="display:none;">
+        <span class="li-label">latest issue:</span>
+        <a id="li-link" href="https://buttondown.com/iamdavehawkins/archive/" target="_blank" rel="noopener"></a>
+    </p>
 </div>
+<script>
+(function() {
+    fetch('https://buttondown.com/iamdavehawkins/rss')
+        .then(function(r) { return r.text(); })
+        .then(function(xml) {
+            var item = new DOMParser().parseFromString(xml, 'application/xml').querySelector('item');
+            if (!item) return;
+            var title = item.querySelector('title');
+            var link = item.querySelector('link');
+            if (!title || !link || !link.textContent) return;
+            var a = document.getElementById('li-link');
+            a.textContent = title.textContent;
+            a.href = link.textContent;
+            document.getElementById('latest-issue').style.display = '';
+        })
+        .catch(function(e) { console.error('latest issue:', e); });
+})();
+</script>
 
 <hr>
 
