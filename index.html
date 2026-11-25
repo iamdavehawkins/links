@@ -132,13 +132,54 @@
         .buy-btn { display: inline-block; margin: 4px 0; background: #4F6A89; color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; padding: 8px 16px; border: 1px solid #3c5269; }
         .buy-btn:hover { background: #3c5269; }
         .buy-btn:visited { color: #fff; }
+
+        /* Masthead: centered top stack */
+        .masthead { text-align: center; margin: 18px 0 14px 0; }
+        .masthead h1 { font-size: 22px; letter-spacing: -0.5px; margin: 0 0 2px 0; }
+        .masthead h2 { margin: 0; }
+
+        /* Listen bar: one bordered block, equal cells */
+        .listen { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid #333; background: #fff; box-shadow: 4px 4px 0 rgba(0,0,0,0.15); margin: 0 0 6px 0; }
+        .listen a { display: block; text-align: center; font-weight: bold; font-size: 13px; color: #000; text-decoration: none; padding: 11px 4px; border-left: 1px solid #333; }
+        .listen a:first-child { border-left: none; }
+        .listen a:hover, .listen a:focus-visible { background: #333; color: #fff; outline: none; }
+        .listen a:visited { color: #000; }
+        .listen a:visited:hover { color: #fff; }
+        .listen-note { text-align: center; font-size: 11px; color: #666; margin: 0 0 14px 0; }
+        @media (max-width: 480px) {
+            .listen { grid-template-columns: 1fr 1fr; }
+            .listen a:nth-child(3) { border-left: none; }
+            .listen a:nth-child(n+3) { border-top: 1px solid #333; }
+        }
+
+        /* Newsletter, centered to sit under the masthead */
+        .panel-hero { text-align: center; }
+
+        /* Latest release: cover beside its links */
+        .release { display: flex; gap: 12px; align-items: flex-start; margin: 8px 0; }
+        .release img { width: 120px; flex-shrink: 0; border: 1px solid #333; }
+        .release-links { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; font-size: 13px; }
+        .quote { font-style: italic; font-size: 12px; color: #666; margin: 8px 0; border-left: 2px solid #ccc; padding-left: 8px; }
+        .quote span { font-size: 10px; font-style: normal; }
+        .quote a { color: #999; }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="99efd3af-3c2e-490e-adc0-aa7a12c5f68a"></script>
 </head>
 <body>
 
-<h1>dave hawkins</h1>
-<h2>songs for when the world won't stop buzzing. denver, co.</h2>
+<div class="masthead">
+    <h1>dave hawkins</h1>
+    <h2>songs for when the world won't stop buzzing. denver, co.</h2>
+</div>
+
+<!-- LISTEN: streaming links up top -->
+<nav class="listen" aria-label="listen to dave hawkins">
+    <a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa" target="_blank" rel="noopener">spotify</a>
+    <a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" target="_blank" rel="noopener">apple music</a>
+    <a href="https://music.youtube.com/channel/UC-IbKKTFITC-p_5rXqGvs6g" target="_blank" rel="noopener">youtube music</a>
+    <a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a>
+</nav>
+<p class="listen-note">or stream and download everything free in <a href="https://music.iamdavehawkins.com" target="_blank" rel="noopener">my archive</a></p>
 
 <!-- HERO: Newsletter -->
 <div class="panel panel-hero">
@@ -173,22 +214,21 @@
 })();
 </script>
 
-<!-- ARCHIVE: all my music, free -->
-<div class="panel archive-cta">
-    <p class="panel-title">&#9654; the dave hawkins archive: all my music, free</p>
-    <p class="panel-subtitle">you can still go to spotify if you really want to, but it's important to me that it's here</p>
-    <a class="archive-btn" href="https://music.iamdavehawkins.com" target="_blank" rel="noopener">the archive &rarr;</a>
-</div>
 
 <hr>
 
 <!-- LATEST MUSIC -->
 <h3>latest release: half alive ep</h3>
-<img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive EP">
-<br><a href="https://halfaliveep.iamdavehawkins.com" target="_blank" rel="noopener">► listen / download (free)</a>
-<br><a class="buy-btn" href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">► buy vinyl / CD on Elastic Stage</a>
-<p style="font-style: italic; font-size: 12px; color: #666; margin: 8px 0; border-left: 2px solid #9B4A34; padding-left: 8px;">"It's fully alive. It's always moving, shimmering. You must keep listening."<br><span style="font-size: 10px;">— <a href="https://www.threads.com/@jack.jose.5/post/DR-pypEDmEk" target="_blank" rel="noopener" style="color: #999;">Jack Jose</a></span></p>
-<p style="font-style: italic; font-size: 12px; color: #666; margin: 8px 0; border-left: 2px solid #9B4A34; padding-left: 8px;">"The cumulative effect of it all feels like some sort of a spell is being cast."<br><span style="font-size: 10px;">— <a href="https://www.grooveartuniverse.com/davehawkins" target="_blank" rel="noopener" style="color: #999;">Groove Art Universe</a></span></p>
+<div class="release">
+    <img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive EP cover">
+    <div class="release-links">
+        <a href="https://halfaliveep.iamdavehawkins.com" target="_blank" rel="noopener">► listen / download (free)</a>
+        <a class="buy-btn" href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">buy vinyl / CD</a>
+        <span class="small">via Elastic Stage</span>
+    </div>
+</div>
+<p class="quote">"It's fully alive. It's always moving, shimmering. You must keep listening."<br><span><a href="https://www.threads.com/@jack.jose.5/post/DR-pypEDmEk" target="_blank" rel="noopener">Jack Jose</a></span></p>
+<p class="quote">"The cumulative effect of it all feels like some sort of a spell is being cast."<br><span><a href="https://www.grooveartuniverse.com/davehawkins" target="_blank" rel="noopener">Groove Art Universe</a></span></p>
 
 <details>
     <summary>about</summary>
@@ -199,21 +239,13 @@
 <hr>
 
 <!-- STORE / SUPPORT -->
-<div class="section-grid">
+<div class="section-grid" style="grid-template-columns: 1fr;">
     <div class="section-box">
         <h4>support music</h4>
         <ul>
             <li><a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a> <span class="small">— best way to support</span></li>
             <li><a href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">vinyl / cd</a> <span class="small">— half alive ep</span></li>
             <li><a href="https://store.iamdavehawkins.com" target="_blank" rel="noopener">merch</a></li>
-        </ul>
-    </div>
-    <div class="section-box">
-        <h4>stream from a billionaire</h4>
-        <ul>
-            <li><a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa" target="_blank" rel="noopener">spotify</a></li>
-            <li><a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" target="_blank" rel="noopener">apple music</a></li>
-            <li><a href="https://music.youtube.com/channel/UC-IbKKTFITC-p_5rXqGvs6g" target="_blank" rel="noopener">youtube music</a></li>
         </ul>
     </div>
 </div>
