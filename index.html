@@ -52,558 +52,269 @@
     </script>
 
     <style>
-        body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.4; max-width: 600px; margin: 0 auto; padding: 10px; background: #f6f6f6; color: #000; }
-        a { color: #00c; }
+        :root { --ink:#000; --paper:#f6f6f6; --card:#fff; --rule:#ccc; --link:#00c; --muted:#666; --rust:#9B4A34; --denim:#4F6A89; }
+        * { box-sizing: border-box; }
+        body { font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 1.45; max-width: 620px; margin: 0 auto; padding: 12px 12px 120px; background: var(--paper); color: var(--ink); }
+        a { color: var(--link); }
         a:visited { color: #551a8b; }
-        h1 { font-size: 16px; margin: 10px 0 3px 0; }
-        h2 { font-size: 13px; font-weight: normal; color: #666; margin: 0 0 10px 0; }
-        h3 { font-size: 12px; margin: 15px 0 5px 0; background: #eee; padding: 3px 5px; border: 1px solid #ccc; }
-        h3.muted { background: transparent; border: none; color: #999; font-style: italic; }
-        hr { border: none; border-top: 1px solid #ccc; margin: 10px 0; }
-        ul { list-style: none; padding: 0; margin: 5px 0; }
-        li { padding: 1px 0; }
-        img { max-width: 120px; }
-        details { margin: 10px 0; font-size: 12px; }
-        summary { cursor: pointer; }
-        input[type="email"] { padding: 4px 6px; font-size: 12px; width: 140px; }
-        input[type="submit"] { padding: 4px 12px; font-size: 11px; cursor: pointer; }
-        .footer { font-size: 10px; color: #666; margin-top: 15px; }
-        .small { font-size: 11px; color: #666; }
-        
-        /* Hero newsletter panel */
-        .panel { border: 1px solid #333; padding: 12px; margin: 10px 0; background: #fff; }
-        .panel-hero { border: 2px solid #333; background: #fffef5; }
-        .panel-title { font-weight: bold; font-size: 13px; margin: 0 0 8px 0; }
-        .panel-subtitle { font-size: 11px; color: #666; margin: 0 0 10px 0; font-style: italic; }
-        .latest-issue { font-size: 11px; margin: 8px 0 0 0; }
-        .latest-issue .li-label { color: #666; }
-        .panel form { margin: 0; padding: 0; background: none; }
-        
-        /* Section panels */
-        .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
-        .section-box { border: 1px solid #ccc; padding: 10px; background: #fff; }
-        .section-box h4 { font-size: 11px; margin: 0 0 6px 0; color: #666; text-transform: uppercase; }
-        .section-box ul { margin: 0; }
-        .section-box li { font-size: 12px; }
-        
-        /* Gallery */
-        .gallery { margin: 10px 0; }
-        .gallery-main { position: relative; margin-bottom: 8px; }
-        .gallery-main img { max-width: 600px; width: 100%; border: 1px solid #ccc; display: block; }
-        .gallery-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.8); border: 1px solid #999; padding: 5px 10px; cursor: pointer; font-size: 18px; user-select: none; }
-        .gallery-nav:hover { background: #fff; }
-        .gallery-prev { left: 10px; }
-        .gallery-next { right: 10px; }
-        .thumbs { margin: 5px 0; }
-        .thumbs img { width: 50px; height: 50px; object-fit: cover; margin: 0 4px 4px 0; border: 1px solid #ccc; cursor: pointer; vertical-align: top; }
-        .thumbs img:hover { border-color: #666; }
-        .thumbs img.active { border: 2px solid #00c; }
-        
-        /* Song carousel */
-        .song-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding: 10px 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
-        .song-carousel::-webkit-scrollbar { display: none; }
-        .song-card { flex: 0 0 85%; max-width: 340px; scroll-snap-align: center; background: #fff; border: 2px solid #333; padding: 14px; box-shadow: 4px 4px 0 rgba(0,0,0,0.15); }
-        .song-card-header { display: flex; gap: 12px; margin-bottom: 10px; }
-        .song-card img { width: 120px; height: 120px; object-fit: cover; border: 1px solid #333; flex-shrink: 0; }
-        .song-card-info { flex: 1; }
-        .song-card-title { font-weight: bold; font-size: 15px; margin: 0 0 4px 0; }
-        .song-card-meta { font-size: 11px; color: #666; margin: 0; }
-        .song-card-lyric { font-style: italic; font-size: 12px; color: #444; border-left: 2px solid #00c; padding-left: 10px; margin: 0 0 10px 0; line-height: 1.5; }
-        .song-card-link { display: inline-block; font-size: 11px; color: #00c; text-decoration: none; border: 1px solid #00c; padding: 4px 10px; }
-        .song-card-link:hover { background: #00c; color: #fff; }
-        .swipe-hint { font-size: 10px; color: #666; margin: 4px 0; }
-        .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
-        .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: #ccc; border: none; cursor: pointer; padding: 0; }
-        .carousel-dot.active { background: #00c; }
+        a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+        h3 { font-size: 13px; margin: 22px 0 8px; background: #eee; padding: 4px 7px; border: 1px solid var(--rule); }
+        .small { font-size: 12px; color: var(--muted); }
+        .mono { font-family: 'Courier New', monospace; }
 
-        /* Webring */
-        .webring { border: 1px solid #ccc; background: #fff; padding: 8px 10px; margin: 5px 0; font-size: 12px; text-align: center; }
-        .webring a { color: #00c; text-decoration: none; }
-        .webring a:hover { text-decoration: underline; }
-        .webring .wr-label a { color: #666; }
-        .webring .wr-sep { color: #ccc; margin: 0 5px; }
+        /* masthead */
+        .masthead { text-align: center; margin: 22px 0 16px; }
+        .masthead h1 { font-size: 26px; margin: 0; letter-spacing: -0.5px; }
+        .masthead h2 { font-size: 14px; font-weight: normal; color: var(--muted); margin: 3px 0 0; }
 
-        /* Archive CTA */
-        .archive-cta { border: 2px solid #9B4A34; background: #fff7f2; }
-        .archive-cta .panel-title { color: #9B4A34; }
-        .archive-btn { display: inline-block; margin-top: 6px; background: #9B4A34; color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; padding: 8px 16px; border: 1px solid #7a3a29; }
-        .archive-btn:hover { background: #7a3a29; }
-        .archive-btn:visited { color: #fff; }
-        .buy-btn { display: inline-block; margin: 4px 0; background: #4F6A89; color: #fff; text-decoration: none; font-weight: bold; font-size: 13px; padding: 8px 16px; border: 1px solid #3c5269; }
-        .buy-btn:hover { background: #3c5269; }
-        .buy-btn:visited { color: #fff; }
-
-        /* Masthead: centered top stack */
-        .masthead { text-align: center; margin: 18px 0 14px 0; }
-        .masthead h1 { font-size: 22px; letter-spacing: -0.5px; margin: 0 0 2px 0; }
-        .masthead h2 { margin: 0; }
-
-        /* Listen bar: one bordered block, equal cells */
-        .listen { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid #333; background: #fff; box-shadow: 4px 4px 0 rgba(0,0,0,0.15); margin: 0 0 6px 0; }
-        .listen a { display: block; text-align: center; font-weight: bold; font-size: 13px; color: #000; text-decoration: none; padding: 11px 4px; border-left: 1px solid #333; }
+        /* listen bar */
+        .listen { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid #333; background: var(--card); box-shadow: 4px 4px 0 rgba(0,0,0,.15); }
+        .listen a { text-align: center; font-weight: bold; font-size: 13px; color: var(--ink); text-decoration: none; padding: 11px 4px; border-left: 1px solid #333; }
         .listen a:first-child { border-left: none; }
-        .listen a:hover, .listen a:focus-visible { background: #333; color: #fff; outline: none; }
-        .listen a:visited { color: #000; }
-        .listen a:visited:hover { color: #fff; }
-        .listen-note { text-align: center; font-size: 11px; color: #666; margin: 0 0 14px 0; }
+        .listen a:hover { background: #333; color: #fff; }
+        .listen-note { text-align: center; font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+
+        /* newsletter */
+        .panel { border: 2px solid #333; background: #fffef5; padding: 14px; margin: 18px 0 0; text-align: center; }
+        .panel-title { font-weight: bold; font-size: 14px; margin: 0 0 6px; }
+        .panel-subtitle { font-size: 12px; color: var(--muted); font-style: italic; margin: 0 0 10px; }
+        .panel form { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+        .panel input[type=email] { padding: 7px 8px; font-size: 14px; width: 210px; border: 1px solid #999; }
+        .panel input[type=submit] { padding: 7px 14px; font-size: 13px; cursor: pointer; }
+        .latest-issue { font-size: 12px; margin: 10px 0 0; }
+
+        /* win95 play button */
+        .play { width: 28px; height: 28px; flex-shrink: 0; background: #ccc; border: 1px outset #999; padding: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+        .play:active { border-style: inset; }
+        .play svg { width: 12px; height: 12px; fill: #000; }
+        .play:hover { background: #222; } .play:hover svg { fill: #fff; }
+        .is-playing .play { background: var(--rust); border-color: var(--rust); } .is-playing .play svg { fill: #fff; }
+
+        /* latest release */
+        .release { background: var(--card); border: 2px solid #333; box-shadow: 4px 4px 0 rgba(0,0,0,.15); padding: 14px; }
+        .release-head { display: flex; gap: 14px; }
+        .release-head img { width: 132px; height: 132px; object-fit: cover; border: 1px solid #333; flex-shrink: 0; }
+        .release-title { font-weight: bold; font-size: 18px; margin: 0; }
+        .release-meta { margin: 2px 0 10px; }
+        .release-links { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; font-size: 13px; }
+        .buy-btn { display: inline-block; background: var(--denim); color: #fff !important; text-decoration: none; font-weight: bold; font-size: 13px; padding: 7px 14px; border: 1px solid #3c5269; }
+        .buy-btn:hover { background: #3c5269; }
+        .tracks { list-style: none; margin: 12px 0 0; padding: 0; border-top: 1px solid #ddd; }
+        .tracks li { display: flex; align-items: center; gap: 9px; padding: 6px 0; border-bottom: 1px solid #eee; }
+        .tracks .n { width: 16px; text-align: right; color: var(--muted); font-size: 12px; }
+        .tracks .t { flex: 1; }
+        .is-playing .t { font-weight: bold; }
+        .quote { font-style: italic; font-size: 12px; color: var(--muted); margin: 10px 0 0; border-left: 2px solid var(--rule); padding-left: 8px; }
+        .quote span { display: block; font-style: normal; font-size: 10px; } .quote a { color: #999; }
+        details { font-size: 12px; margin: 10px 0 0; } summary { cursor: pointer; }
+
+        /* discography */
+        .disco { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--rule); }
+        .disco li { display: grid; grid-template-columns: 40px 28px 40px 1fr auto; align-items: center; gap: 10px; padding: 6px 10px 6px 8px; border-top: 1px solid #eee; }
+        .disco li:first-child { border-top: none; }
+        .disco li.new-year { border-top: 1px solid var(--rule); }
+        .disco .yr { font-size: 12px; color: var(--muted); }
+        .disco img { width: 40px; height: 40px; object-fit: cover; border: 1px solid #999; display: block; }
+        .disco .t { font-size: 14px; }
+        .disco .pg { font-size: 12px; }
+        .disco li.is-playing { background: #fff7f2; }
+
+        /* directory, craigslist-style */
+        .dir { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 18px; }
+        .dir h4 { font-size: 13px; margin: 10px 0 4px; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+        .dir ul { list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.7; }
+
+        .kit { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .kit img { width: 64px; height: 64px; object-fit: cover; border: 1px solid var(--rule); }
+
+        .webring { border: 1px solid var(--rule); background: var(--card); padding: 7px 10px; font-size: 12px; text-align: center; margin-top: 22px; }
+        .webring a { text-decoration: none; } .webring .sep { color: var(--rule); margin: 0 5px; }
+        .footer { font-size: 11px; color: var(--muted); text-align: center; margin-top: 12px; }
+
+        /* bottom player */
+        .player { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 2px solid #333; box-shadow: 0 -2px 10px rgba(0,0,0,.15); padding: 9px 14px 10px; font-size: 13px; display: none; z-index: 10; }
+        .player.on { display: block; }
+        .player-in { max-width: 620px; margin: 0 auto; }
+        .player-row { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+        .player-row b { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .player button.ctl { background: none; border: none; padding: 0 2px; color: var(--link); text-decoration: underline; cursor: pointer; font: inherit; }
+        .player button.ctl:hover { background: var(--link); color: #fff; text-decoration: none; }
+        .progress { height: 8px; background: #ccc; margin-top: 7px; cursor: pointer; }
+        .progress div { height: 100%; width: 0; background: var(--rust); }
+
         @media (max-width: 480px) {
             .listen { grid-template-columns: 1fr 1fr; }
             .listen a:nth-child(3) { border-left: none; }
             .listen a:nth-child(n+3) { border-top: 1px solid #333; }
+            .release-head img { width: 104px; height: 104px; }
+            .disco li { grid-template-columns: 28px 40px 1fr auto; }
+            .disco .yr { display: none; }
+            .disco li.new-year::before { content: attr(data-year); grid-column: 1 / -1; font-family: 'Courier New', monospace; font-size: 12px; color: var(--muted); }
+            .dir { grid-template-columns: 1fr 1fr; }
         }
-
-        /* Newsletter, centered to sit under the masthead */
-        .panel-hero { text-align: center; }
-
-        /* Latest release: cover beside its links */
-        .release { display: flex; gap: 12px; align-items: flex-start; margin: 8px 0; }
-        .release img { width: 120px; flex-shrink: 0; border: 1px solid #333; }
-        .release-links { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; font-size: 13px; }
-        .quote { font-style: italic; font-size: 12px; color: #666; margin: 8px 0; border-left: 2px solid #ccc; padding-left: 8px; }
-        .quote span { font-size: 10px; font-style: normal; }
-        .quote a { color: #999; }
+        @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
     </style>
     <script defer src="https://cloud.umami.is/script.js" data-website-id="99efd3af-3c2e-490e-adc0-aa7a12c5f68a"></script>
 </head>
 <body>
 
-<div class="masthead">
+<header class="masthead">
     <h1>dave hawkins</h1>
     <h2>songs for when the world won't stop buzzing. denver, co.</h2>
-</div>
+</header>
 
-<!-- LISTEN: streaming links up top -->
 <nav class="listen" aria-label="listen to dave hawkins">
     <a href="https://open.spotify.com/artist/1cmyHQDqeBFVzWHeekwGaa" target="_blank" rel="noopener">spotify</a>
     <a href="https://music.apple.com/us/artist/dave-hawkins/1746952981" target="_blank" rel="noopener">apple music</a>
     <a href="https://music.youtube.com/channel/UC-IbKKTFITC-p_5rXqGvs6g" target="_blank" rel="noopener">youtube music</a>
     <a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a>
 </nav>
-<p class="listen-note">or stream and download everything free in <a href="https://music.iamdavehawkins.com" target="_blank" rel="noopener">my archive</a></p>
+<p class="listen-note">or press play on anything below</p>
 
-<!-- HERO: Newsletter -->
-<div class="panel panel-hero">
+<div class="panel">
     <p class="panel-title">join my email newsletter</p>
     <p class="panel-subtitle">Let's connect the old-fashioned way on email. I can't trust the algorithm any more than you can :)</p>
     <form action="https://buttondown.com/api/emails/embed-subscribe/iamdavehawkins" method="post" target="popupwindow" onsubmit="window.open('https://newsletter.iamdavehawkins.com', 'popupwindow')">
-        <input type="email" name="email" placeholder="your@email.com">
+        <input type="email" name="email" placeholder="your@email.com" aria-label="email address" required>
         <input type="submit" value="join the list">
     </form>
-    <!-- Latest issue — pulled live from the Buttondown archive RSS, hidden unless it loads -->
-    <p class="latest-issue" id="latest-issue" style="display:none;">
-        <span class="li-label">latest issue:</span>
-        <a id="li-link" href="https://buttondown.com/iamdavehawkins/archive/" target="_blank" rel="noopener"></a>
-    </p>
+    <p class="latest-issue" id="latest-issue" hidden><span class="small">latest issue:</span> <a id="li-link" href="https://buttondown.com/iamdavehawkins/archive/" target="_blank" rel="noopener"></a></p>
 </div>
-<script>
-(function() {
-    fetch('https://buttondown.com/iamdavehawkins/rss')
-        .then(function(r) { return r.text(); })
-        .then(function(xml) {
-            var item = new DOMParser().parseFromString(xml, 'application/xml').querySelector('item');
-            if (!item) return;
-            var title = item.querySelector('title');
-            var link = item.querySelector('link');
-            if (!title || !link || !link.textContent) return;
-            var a = document.getElementById('li-link');
-            a.textContent = title.textContent;
-            a.href = link.textContent;
-            document.getElementById('latest-issue').style.display = '';
-        })
-        .catch(function(e) { console.error('latest issue:', e); });
-})();
-</script>
 
-
-<hr>
-
-<!-- LATEST MUSIC -->
 <h3>latest release: half alive ep</h3>
 <div class="release">
-    <img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive EP cover">
-    <div class="release-links">
-        <a href="https://halfaliveep.iamdavehawkins.com" target="_blank" rel="noopener">► listen / download (free)</a>
-        <a class="buy-btn" href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">buy vinyl / CD</a>
-        <span class="small">via Elastic Stage</span>
+    <div class="release-head">
+        <img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive EP cover">
+        <div>
+            <p class="release-title">Half Alive</p>
+            <p class="release-meta small mono">EP · 2026 · 5 songs</p>
+            <div class="release-links">
+                <a href="https://halfaliveep.iamdavehawkins.com" target="_blank" rel="noopener">listen / download (free)</a>
+                <a class="buy-btn" href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">buy vinyl / CD</a>
+            </div>
+        </div>
     </div>
+    <ol class="tracks" id="epTracks"></ol>
+    <p class="quote">"It's fully alive. It's always moving, shimmering. You must keep listening."<span><a href="https://www.threads.com/@jack.jose.5/post/DR-pypEDmEk" target="_blank" rel="noopener">Jack Jose</a></span></p>
+    <p class="quote">"The cumulative effect of it all feels like some sort of a spell is being cast."<span><a href="https://www.grooveartuniverse.com/davehawkins" target="_blank" rel="noopener">Groove Art Universe</a></span></p>
+    <details>
+        <summary>about</summary>
+        <p>Dave Hawkins writes songs meant for slowing down in a fast-moving world. Based in Denver, operating out of a home studio, he blends classical piano with synth textures and indie guitar rock.</p>
+        <p>His new EP Half Alive looks at the loops we get stuck in and the moments that break us out.</p>
+    </details>
 </div>
-<p class="quote">"It's fully alive. It's always moving, shimmering. You must keep listening."<br><span><a href="https://www.threads.com/@jack.jose.5/post/DR-pypEDmEk" target="_blank" rel="noopener">Jack Jose</a></span></p>
-<p class="quote">"The cumulative effect of it all feels like some sort of a spell is being cast."<br><span><a href="https://www.grooveartuniverse.com/davehawkins" target="_blank" rel="noopener">Groove Art Universe</a></span></p>
+
+<h3>all songs</h3>
+<ul class="disco" id="disco"></ul>
+<p class="small" style="margin:6px 0 0">b-sides, live takes, lyrics and downloads: <a href="https://music.iamdavehawkins.com" target="_blank" rel="noopener">the archive</a></p>
+
+<h3>everything else</h3>
+<div class="dir">
+    <div><h4>read</h4><ul>
+        <li><a href="https://blog.iamdavehawkins.com" target="_blank" rel="noopener">every letter i've sent</a></li>
+        <li><a href="https://nicethings.iamdavehawkins.com" target="_blank" rel="noopener">nice things (press)</a></li>
+    </ul></div>
+    <div><h4>lists</h4><ul>
+        <li><a href="https://mademecry.iamdavehawkins.com" target="_blank" rel="noopener">songs that made me cry</a></li>
+        <li><a href="https://collection.iamdavehawkins.com" target="_blank" rel="noopener">my record collection</a></li>
+        <li><a href="https://friends.iamdavehawkins.com" target="_blank" rel="noopener">friends</a></li>
+    </ul></div>
+    <div><h4>support</h4><ul>
+        <li><a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a></li>
+        <li><a href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">vinyl / cd</a></li>
+        <li><a href="https://store.iamdavehawkins.com" target="_blank" rel="noopener">merch</a></li>
+    </ul></div>
+    <div><h4>watch</h4><ul>
+        <li><a href="https://www.youtube.com/@iamdavehawkins" target="_blank" rel="noopener">youtube</a></li>
+        <li><a href="https://photography.iamdavehawkins.com" target="_blank" rel="noopener">35mm film</a></li>
+    </ul></div>
+    <div><h4>elsewhere</h4><ul>
+        <li><a href="https://www.instagram.com/iamdavehawkins" target="_blank" rel="noopener">instagram</a></li>
+        <li><a href="https://www.tiktok.com/@iamdavehawkins" target="_blank" rel="noopener">tiktok</a></li>
+        <li><a href="https://www.threads.net/@iamdavehawkins" target="_blank" rel="noopener">threads</a></li>
+        <li><a href="https://www.linkedin.com/in/iamdavehawkins/" target="_blank" rel="noopener">linkedin</a></li>
+    </ul></div>
+    <div><h4>other projects</h4><ul>
+        <li><a href="https://tracktunes.app" target="_blank" rel="noopener">tracktunes</a></li>
+        <li><a href="https://bandtimeline.com" target="_blank" rel="noopener">band timeline</a></li>
+        <li><a href="https://webringthemusic.info" target="_blank" rel="noopener">webringthemusic</a></li>
+    </ul></div>
+</div>
 
 <details>
-    <summary>about</summary>
-    <p>Dave Hawkins writes songs meant for slowing down in a fast-moving world. Based in Denver, operating out of a home studio, he blends classical piano with synth textures and indie guitar rock.</p>
-    <p>His new EP Half Alive looks at the loops we get stuck in and the moments that break us out.</p>
+    <summary>media kit (press photos)</summary>
+    <div class="kit">
+        <a href="EP Images/Half Alive EP - Album Cover 1.png" target="_blank"><img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Half Alive cover 1"></a>
+        <a href="EP Images/Half Alive EP - Album Cover 2.png" target="_blank"><img src="EP Images/Half Alive EP - Album Cover 2.png" alt="Half Alive cover 2"></a>
+        <a href="EP Images/Half Alive EP - Album Cover 3.png" target="_blank"><img src="EP Images/Half Alive EP - Album Cover 3.png" alt="Half Alive cover 3"></a>
+        <a href="EP Images/Half Alive EP - Album Cover 4.png" target="_blank"><img src="EP Images/Half Alive EP - Album Cover 4.png" alt="Half Alive cover 4"></a>
+        <a href="EP Images/Half Alive EP - Album Cover 5.png" target="_blank"><img src="EP Images/Half Alive EP - Album Cover 5.png" alt="Half Alive cover 5"></a>
+        <a href="EP Images/Spotify Banner 1 lowres.png" target="_blank"><img src="EP Images/Spotify Banner 1 lowres.png" alt="banner 1"></a>
+        <a href="EP Images/Spotify Banner 2 lowres.png" target="_blank"><img src="EP Images/Spotify Banner 2 lowres.png" alt="banner 2"></a>
+    </div>
 </details>
 
-<hr>
-
-<!-- STORE / SUPPORT -->
-<div class="section-grid" style="grid-template-columns: 1fr;">
-    <div class="section-box">
-        <h4>support music</h4>
-        <ul>
-            <li><a href="https://iamdavehawkins.bandcamp.com" target="_blank" rel="noopener">bandcamp</a> <span class="small">— best way to support</span></li>
-            <li><a href="https://elasticstage.com/iamdavehawkins/releases/half-alive-album" target="_blank" rel="noopener">vinyl / cd</a> <span class="small">— half alive ep</span></li>
-            <li><a href="https://store.iamdavehawkins.com" target="_blank" rel="noopener">merch</a></li>
-        </ul>
-    </div>
-</div>
-
-<hr>
-
-<!-- ARCHIVES / LINKS -->
-<h3>archives</h3>
-<ul>
-    <li><a href="https://blog.iamdavehawkins.com" target="_blank" rel="noopener">blog</a> - every letter i've sent</li>
-    <li><a href="https://nicethings.iamdavehawkins.com" target="_blank" rel="noopener">nice things</a> - press & reviews</li>
-    <li><a href="https://www.youtube.com/@iamdavehawkins" target="_blank" rel="noopener">youtube</a> - covers + music videos</li>
-    <li><a href="https://mademecry.iamdavehawkins.com" target="_blank" rel="noopener">songs that made me cry</a> - seriously</li>
-    <li><a href="https://collection.iamdavehawkins.com" target="_blank" rel="noopener">my collection</a> - vinyl records</li>
-</ul>
-
-<h3>song pages</h3>
-<p class="swipe-hint">swipe for more →</p>
-<div class="song-carousel" id="songCarousel">
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/With Love - Album Cover.png" alt="With Love">
-            <div class="song-card-info">
-                <p class="song-card-title">With Love</p>
-                <p class="song-card-meta">2025 · 3:45</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"So just take your time, we'll be right outside / I will always wait for you"</p>
-        <a href="https://withlove.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/aEHIni3-naY" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Bones - Dave Hawkins - Album Art.png" alt="Bones">
-            <div class="song-card-info">
-                <p class="song-card-title">Bones</p>
-                <p class="song-card-meta">2024 · 4:12</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"No you just don't know where all the bones are hid / Yeah I know you saw me with the shovel didn't ya dear"</p>
-        <a href="https://bones.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/Y7pT_aJnpMU" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Good Behavior - Album Cover.png" alt="Good Behavior">
-            <div class="song-card-info">
-                <p class="song-card-title">Good Behavior</p>
-                <p class="song-card-meta">2025 · 3:18</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"We know what you did, and what you deserve / we know that you hid, who you really were / we know we were kids, when you did your worst"</p>
-        <a href="https://goodbehavior.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Wool & Fur - Album Cover.png" alt="Wool & Fur">
-            <div class="song-card-info">
-                <p class="song-card-title">Wool & Fur</p>
-                <p class="song-card-meta">2025 · 4:30</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"His empty flask, his broken ax, his coats of wool and fur"</p>
-        <a href="https://woolandfur.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/iN3Lr3CLIcU" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/A Loop - Album Cover.jpg" alt="A Loop">
-            <div class="song-card-info">
-                <p class="song-card-title">A Loop</p>
-                <p class="song-card-meta">2025 · 3:52</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"Caught in a loop, all day, always / caught in a loop, no light, no way"</p>
-        <a href="https://aloop.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/LGvOouPAe1A" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Flicker - Album Cover.png" alt="Flicker">
-            <div class="song-card-info">
-                <p class="song-card-title">Flicker</p>
-                <p class="song-card-meta">2025 · 4:18</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"Not the end, not the arc / just a flicker in the dark"</p>
-        <a href="https://flicker.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/How Many More Decembers - Album Cover.png" alt="How Many More Decembers">
-            <div class="song-card-info">
-                <p class="song-card-title">How Many More Decembers</p>
-                <p class="song-card-meta">2025 · 4:02</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"There's a few folks missing; it's got me thinking / how many more Decembers do we have"</p>
-        <a href="https://howmanymoredecembers.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/QxNKhkylDGY" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Its a Long Drive to Christmas - Album Art.png" alt="It's a Long Drive to Christmas">
-            <div class="song-card-info">
-                <p class="song-card-title">It's a Long Drive to Christmas</p>
-                <p class="song-card-meta">2024 · 3:42</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"It's a long drive to Christmas, and every song that I listen to goes on and on and reminds me just how long, and I miss you"</p>
-        <a href="https://itsalongdrivetochristmas.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/u6ecaHt03eY" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Colors Of The Leaves - Album Art.jpg" alt="Colors of the Leaves">
-            <div class="song-card-info">
-                <p class="song-card-title">Colors of the Leaves</p>
-                <p class="song-card-meta">2024 · 3:55</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"I would build a rainbow, I would calm the seas / and I would pull the stars from the sky and change the colors of the leaves"</p>
-        <a href="https://colorsoftheleaves.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/-D9iPx8mreY" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Santa Fe - Album Art.jpg" alt="Santa Fe">
-            <div class="song-card-info">
-                <p class="song-card-title">Santa Fe</p>
-                <p class="song-card-meta">2024 · 4:05</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"Wrote you a letter from Santa Fe / Won't get to you until Saturday / Turns out I had a lot of stuff to say"</p>
-        <a href="https://santafe.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="EP Images/Half Alive EP - Album Cover 1.png" alt="Richmond Airport Ground Crew" style="filter: grayscale(100%) brightness(1.2);">
-            <div class="song-card-info">
-                <p class="song-card-title">Richmond Airport Ground Crew</p>
-                <p class="song-card-meta">2024 · 2:53</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"We're stuck in this tube without you"</p>
-        <a href="https://richmondairportgroundcrew.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/95IP0zr2AfI" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="https://theaspen.iamdavehawkins.com/The%20Aspen%20-%20Album%20Art%20Simple.jpg" alt="The Aspen">
-            <div class="song-card-info">
-                <p class="song-card-title">The Aspen</p>
-                <p class="song-card-meta">2023 · 2:45</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"You know they're all connected, the roots all intertwined"</p>
-        <a href="https://theaspen.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="album art/Strawberry Summer - Album Art Simple.jpg" alt="Strawberry Summer">
-            <div class="song-card-info">
-                <p class="song-card-title">Strawberry Summer</p>
-                <p class="song-card-meta">2023 · 3:28</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"I wanna be in a strawberry summer with you / I wanna be in the sun"</p>
-        <a href="https://strawberrysummer.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/xFu3cpPFpOA" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="https://upahead.iamdavehawkins.com/Up%20Ahead%20-%20Album%20Art.png" alt="Up Ahead">
-            <div class="song-card-info">
-                <p class="song-card-title">Up Ahead</p>
-                <p class="song-card-meta">2023 · 2:13</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"So let's get going and see what's up ahead"</p>
-        <a href="https://upahead.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/lYajdnLMBm4" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="https://dustyrecord.iamdavehawkins.com/Dusty%20Record%20-%20Album%20Art%20New.jpg" alt="Dusty Record">
-            <div class="song-card-info">
-                <p class="song-card-title">Dusty Record</p>
-                <p class="song-card-meta">2022 · 2:43</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"Well I found a dusty record sittin' on a shelf / Pieces of you still follow me"</p>
-        <a href="https://dustyrecord.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/O9CZYCK5aRY" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="https://stairsinwhite.iamdavehawkins.com/Stairs%20In%20White%20-%20Album%20Art.png" alt="Stairs In White">
-            <div class="song-card-info">
-                <p class="song-card-title">Stairs In White</p>
-                <p class="song-card-meta">2022 · 3:01</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"On my return to stardust, to be born again."</p>
-        <a href="https://stairsinwhite.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-        <a href="https://youtu.be/LFRprDIdUao" target="_blank" rel="noopener" class="song-card-link">music video →</a>
-    </div>
-    <div class="song-card">
-        <div class="song-card-header">
-            <img src="https://thedayyounevercame.iamdavehawkins.com/the%20day%20you%20never%20came%20-%20New%20Album%20Art.png" alt="the day you never came">
-            <div class="song-card-info">
-                <p class="song-card-title">the day you never came</p>
-                <p class="song-card-meta">2022 · 2:19</p>
-            </div>
-        </div>
-        <p class="song-card-lyric">"I was standing there, in our normal place."</p>
-        <a href="https://thedayyounevercame.iamdavehawkins.com/" target="_blank" rel="noopener" class="song-card-link">listen →</a>
-    </div>
-</div>
-<div class="carousel-dots" id="songDots"></div>
-
-<script>
-(function() {
-    const carousel = document.getElementById('songCarousel');
-    const dotsContainer = document.getElementById('songDots');
-    const cards = carousel.querySelectorAll('.song-card');
-    
-    // Create dots
-    cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => cards[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        dotsContainer.appendChild(dot);
-    });
-    
-    const dots = dotsContainer.querySelectorAll('.carousel-dot');
-    
-    // Update dots on scroll
-    let timeout;
-    carousel.addEventListener('scroll', () => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => {
-            const scrollLeft = carousel.scrollLeft;
-            const cardWidth = cards[0].offsetWidth + 16;
-            const index = Math.round(scrollLeft / cardWidth);
-            dots.forEach((d, i) => d.classList.toggle('active', i === index));
-        }, 50);
-    });
-})();
-</script>
-
-<hr>
-
-<h3>media kit</h3>
-<div class="gallery">
-    <div class="gallery-main">
-        <img id="mainImage" src="EP Images/Half Alive EP - Album Cover 1.png" alt="">
-        <span class="gallery-nav gallery-prev" onclick="changeImage(-1)">‹</span>
-        <span class="gallery-nav gallery-next" onclick="changeImage(1)">›</span>
-    </div>
-    <div class="thumbs">
-        <img src="EP Images/Half Alive EP - Album Cover 1.png" onclick="setImage(0)" class="active">
-        <img src="EP Images/Half Alive EP - Album Cover 2.png" onclick="setImage(1)">
-        <img src="EP Images/Half Alive EP - Album Cover 3.png" onclick="setImage(2)">
-        <img src="EP Images/Half Alive EP - Album Cover 4.png" onclick="setImage(3)">
-        <img src="EP Images/Half Alive EP - Album Cover 5.png" onclick="setImage(4)">
-        <img src="EP Images/Spotify Banner 1 lowres.png" onclick="setImage(5)">
-        <img src="EP Images/Spotify Banner 2 lowres.png" onclick="setImage(6)">
-    </div>
-</div>
-
-<script>
-const images = [
-    "EP Images/Half Alive EP - Album Cover 1.png",
-    "EP Images/Half Alive EP - Album Cover 2.png",
-    "EP Images/Half Alive EP - Album Cover 3.png",
-    "EP Images/Half Alive EP - Album Cover 4.png",
-    "EP Images/Half Alive EP - Album Cover 5.png",
-    "EP Images/Spotify Banner 1 lowres.png",
-    "EP Images/Spotify Banner 2 lowres.png"
-];
-let currentIndex = 0;
-
-function setImage(index) {
-    currentIndex = index;
-    document.getElementById('mainImage').src = images[index];
-    document.querySelectorAll('.thumbs img').forEach((img, i) => {
-        img.classList.toggle('active', i === index);
-    });
-}
-
-function changeImage(direction) {
-    currentIndex = (currentIndex + direction + images.length) % images.length;
-    setImage(currentIndex);
-}
-</script>
-
-<hr>
-
-<h3>other projects</h3>
-<ul>
-    <li><a href="https://tracktunes.app" target="_blank" rel="noopener">tracktunes</a> - strava + music</li>
-    <li><a href="https://photography.iamdavehawkins.com" target="_blank" rel="noopener">35mm film</a> - hobby</li>
-    <li><a href="https://bandtimeline.com" target="_blank" rel="noopener">band timeline</a> - wikipedia-style band timelines</li>
-    <li><a href="https://webringthemusic.info" target="_blank" rel="noopener">webringthemusic</a> - an indie music webring</li>
-</ul>
-
-<hr>
-
-<h3>other places</h3>
-<ul>
-    <li><a href="https://www.threads.net/@iamdavehawkins" target="_blank" rel="noopener">threads</a></li>
-    <li><a href="https://www.instagram.com/iamdavehawkins" target="_blank" rel="noopener">instagram</a></li>
-    <li><a href="https://www.tiktok.com/@iamdavehawkins" target="_blank" rel="noopener">tiktok</a></li>
-    <li><a href="https://www.linkedin.com/in/iamdavehawkins/" target="_blank" rel="noopener">linkedin</a></li>
-</ul>
-
-<hr>
-
-<h3>indie music webring</h3>
-<!-- WeBringTheMusic — custom nav on their public ring API, styled to match the page -->
-<div class="webring" id="webring">
-    <span class="wr-label"><a href="https://webringthemusic.info" target="_blank" rel="noopener">WeBringTheMusic</a></span>
-    <span class="wr-sep">|</span>
-    <a id="wr-prev" href="https://webringthemusic.info">← prev</a>
-    <span class="wr-sep">·</span>
-    <a id="wr-random" href="https://webringthemusic.info">random</a>
-    <span class="wr-sep">·</span>
+<div class="webring">
+    <a href="https://webringthemusic.info" target="_blank" rel="noopener" style="color:#666">WeBringTheMusic</a><span class="sep">|</span>
+    <a id="wr-prev" href="https://webringthemusic.info">← prev</a><span class="sep">·</span>
+    <a id="wr-random" href="https://webringthemusic.info">random</a><span class="sep">·</span>
     <a id="wr-next" href="https://webringthemusic.info">next →</a>
-    <span class="wr-sep">|</span>
-    <a href="https://www.webringthemusic.info/directory" target="_blank" rel="noopener">directory</a>
 </div>
+<div class="footer">made <a href="https://withlove.iamdavehawkins.com">with love</a> in denver, co</div>
+
+<div class="player" id="player" aria-live="polite">
+    <div class="player-in">
+        <div class="player-row">
+            <b id="pTitle"></b>
+            <span><button class="ctl" id="pPrev">prev</button> <button class="ctl" id="pPlay">pause</button> <button class="ctl" id="pNext">next</button></span>
+            <span class="mono small" id="pTime">0:00</span>
+        </div>
+        <div class="progress" id="pBar"><div id="pFill"></div></div>
+    </div>
+</div>
+<audio id="audio" preload="none"></audio>
+
 <script>
-(function() {
-    var api = 'https://www.webringthemusic.info/api/ring-by-domain?domain=' + encodeURIComponent(window.location.hostname);
-    fetch(api)
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
-            function set(id, node) {
-                if (!node) return;
-                var el = document.getElementById(id);
-                el.href = node.website;
-                if (node.name) el.title = node.name;
-            }
-            set('wr-prev', d.prev);
-            set('wr-random', d.random);
-            set('wr-next', d.next);
-        })
-        .catch(function(e) { console.error('webring:', e); });
-})();
+const SONGS = [{"t":"With Love","y":2026,"a":"https://music.iamdavehawkins.com/mp3/withlove.mp3","art":"https://music.iamdavehawkins.com/art/withlove.jpg","p":"https://withlove.iamdavehawkins.com/","ep":1},{"t":"A Loop","y":2026,"a":"https://music.iamdavehawkins.com/mp3/aloop.mp3","art":"https://music.iamdavehawkins.com/art/aloop.jpg","p":"https://aloop.iamdavehawkins.com/","ep":1},{"t":"Flicker","y":2026,"a":"https://music.iamdavehawkins.com/mp3/flicker.mp3","art":"https://music.iamdavehawkins.com/art/flicker.jpg","p":"https://flicker.iamdavehawkins.com/","ep":1},{"t":"Good Behavior","y":2026,"a":"https://music.iamdavehawkins.com/mp3/goodbehavior.mp3","art":"https://music.iamdavehawkins.com/art/goodbehavior.jpg","p":"https://goodbehavior.iamdavehawkins.com/","ep":1},{"t":"Half Alive","y":2026,"a":"https://music.iamdavehawkins.com/mp3/halfalive.mp3","art":"https://music.iamdavehawkins.com/art/halfalive.jpg","p":"https://halfaliveep.iamdavehawkins.com/","ep":1},{"t":"How Many More Decembers","y":2025,"a":"https://music.iamdavehawkins.com/mp3/howmanymoredecembers.mp3","art":"https://music.iamdavehawkins.com/art/howmanymoredecembers.jpg","p":"https://howmanymoredecembers.iamdavehawkins.com/"},{"t":"Wool & Fur","y":2025,"a":"https://music.iamdavehawkins.com/mp3/woolandfur.mp3","art":"https://music.iamdavehawkins.com/art/woolandfur.jpg","p":"https://woolandfur.iamdavehawkins.com/"},{"t":"It's a Long Drive to Christmas","y":2024,"a":"https://music.iamdavehawkins.com/mp3/itsalongdrivetochristmas.mp3","art":"https://music.iamdavehawkins.com/art/itsalongdrivetochristmas.jpg","p":"https://itsalongdrivetochristmas.iamdavehawkins.com/"},{"t":"Bones","y":2024,"a":"https://music.iamdavehawkins.com/mp3/bones.mp3","art":"https://music.iamdavehawkins.com/art/bones.jpg","p":"https://bones.iamdavehawkins.com/"},{"t":"Colors of the Leaves","y":2024,"a":"https://music.iamdavehawkins.com/mp3/colorsoftheleaves.mp3","art":"https://music.iamdavehawkins.com/art/colorsoftheleaves.jpg","p":"https://colorsoftheleaves.iamdavehawkins.com/"},{"t":"Santa Fe","y":2024,"a":"https://music.iamdavehawkins.com/mp3/santafe.mp3","art":"https://music.iamdavehawkins.com/art/santafe.jpg","p":"https://santafe.iamdavehawkins.com/"},{"t":"Richmond Airport Ground Crew","y":2024,"a":"https://music.iamdavehawkins.com/mp3/richmondairportgroundcrew.mp3","art":"EP Images/Half Alive EP - Album Cover 1.png","gray":1,"p":"https://richmondairportgroundcrew.iamdavehawkins.com/"},{"t":"Strawberry Summer","y":2023,"a":"https://music.iamdavehawkins.com/mp3/strawberrysummer.mp3","art":"https://music.iamdavehawkins.com/art/strawberrysummer.jpg","p":"https://strawberrysummer.iamdavehawkins.com/"},{"t":"The Aspen","y":2023,"a":"https://music.iamdavehawkins.com/mp3/theaspen.mp3","art":"https://music.iamdavehawkins.com/art/theaspen.jpg","p":"https://theaspen.iamdavehawkins.com/"},{"t":"Stairs in White","y":2023,"a":"https://music.iamdavehawkins.com/mp3/stairsinwhite.mp3","art":"https://music.iamdavehawkins.com/art/stairsinwhite.jpg","p":"https://stairsinwhite.iamdavehawkins.com/"},{"t":"The Day You Never Came","y":2023,"a":"https://music.iamdavehawkins.com/mp3/thedayyounevercame.mp3","art":"https://music.iamdavehawkins.com/art/thedayyounevercame.jpg","p":"https://thedayyounevercame.iamdavehawkins.com/"},{"t":"Dusty Record","y":2023,"a":"https://music.iamdavehawkins.com/mp3/dustyrecord.mp3","art":"https://music.iamdavehawkins.com/art/dustyrecord.jpg","p":"https://dustyrecord.iamdavehawkins.com/"},{"t":"Up Ahead","y":2023,"a":"https://music.iamdavehawkins.com/mp3/upahead.mp3","art":"https://music.iamdavehawkins.com/art/upahead.jpg","p":"https://upahead.iamdavehawkins.com/"}];
+const PLAY = '<svg viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z"/></svg>', PAUSE = '<svg viewBox="0 0 10 10"><path d="M2 1h2v8H2zM6 1h2v8H6z"/></svg>';
+const audio = document.getElementById('audio'), rows = [];
+let cur = -1;
+
+function btn(i) { const b = document.createElement('button'); b.className = 'play'; b.innerHTML = PLAY; b.setAttribute('aria-label', 'play ' + SONGS[i].t); b.onclick = () => toggle(i); return b; }
+
+let n = 0;
+SONGS.forEach((s, i) => {
+    if (s.ep) {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="n mono">${++n}</span><span class="t"><a href="${s.p}" target="_blank" rel="noopener">${s.t}</a></span>`;
+        li.prepend(btn(i)); document.getElementById('epTracks').append(li); rows[i] = li; return;
+    }
+    const prev = SONGS[i - 1], newYear = !prev || prev.y !== s.y || prev.ep;
+    const li = document.createElement('li'); if (newYear) { li.className = 'new-year'; li.dataset.year = s.y; }
+    li.innerHTML = `<span class="yr mono">${newYear ? s.y : ''}</span><span></span><img src="${s.art}" alt="" loading="lazy"${s.gray ? " style=\"filter:grayscale(1) brightness(1.2)\"" : ""}><span class="t">${s.t}</span><a class="pg" href="${s.p}" target="_blank" rel="noopener">song page</a>`;
+    li.children[1].replaceWith(btn(i)); document.getElementById('disco').append(li); rows[i] = li;
+});
+
+function fmt(t) { t = Math.floor(t || 0); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); }
+function mark() { rows.forEach((r, i) => { const on = i === cur && !audio.paused; r.classList.toggle('is-playing', i === cur); r.querySelector('.play').innerHTML = on ? PAUSE : PLAY; }); document.getElementById('pPlay').textContent = audio.paused ? 'play' : 'pause'; }
+function load(i) { cur = (i + SONGS.length) % SONGS.length; audio.src = SONGS[cur].a; audio.play(); document.getElementById('pTitle').textContent = SONGS[cur].t; document.getElementById('player').classList.add('on'); }
+function toggle(i) { if (i === cur) { audio.paused ? audio.play() : audio.pause(); } else load(i); }
+audio.addEventListener('play', mark); audio.addEventListener('pause', mark);
+audio.addEventListener('ended', () => load(cur + 1));
+audio.addEventListener('timeupdate', () => { document.getElementById('pTime').textContent = fmt(audio.currentTime) + ' / ' + fmt(audio.duration); document.getElementById('pFill').style.width = (audio.currentTime / audio.duration * 100 || 0) + '%'; });
+document.getElementById('pPlay').onclick = () => toggle(cur);
+document.getElementById('pPrev').onclick = () => load(cur - 1);
+document.getElementById('pNext').onclick = () => load(cur + 1);
+document.getElementById('pBar').onclick = e => { if (audio.duration) audio.currentTime = e.offsetX / e.currentTarget.offsetWidth * audio.duration; };
+
+fetch('https://buttondown.com/iamdavehawkins/rss').then(r => r.text()).then(xml => {
+    const item = new DOMParser().parseFromString(xml, 'application/xml').querySelector('item'); if (!item) return;
+    const a = document.getElementById('li-link'); a.textContent = item.querySelector('title').textContent; a.href = item.querySelector('link').textContent;
+    document.getElementById('latest-issue').hidden = false;
+}).catch(() => {});
+fetch('https://www.webringthemusic.info/api/ring-by-domain?domain=iamdavehawkins.com').then(r => r.json()).then(d => {
+    for (const k of ['prev', 'random', 'next']) if (d[k]) { const el = document.getElementById('wr-' + k); el.href = d[k].website; if (d[k].name) el.title = d[k].name; }
+}).catch(() => {});
 </script>
-
-<hr>
-
-<div class="footer">
-    made <a ref="https://withlove.iamdavehawkins.com">with love</a> in denver, co<br>
-    last updated: 2026
-</div>
-
 </body>
 </html>
