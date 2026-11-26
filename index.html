@@ -110,6 +110,22 @@
         .quote span { display: block; font-style: normal; font-size: 10px; } .quote a { color: #999; }
         details { font-size: 12px; margin: 10px 0 0; } summary { cursor: pointer; }
 
+        /* videos shelf */
+        .shelf { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 12px; }
+        .shelf figure { margin: 0; }
+        .shelf .thumb { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; padding: 0; border: 2px solid #333; box-shadow: 3px 3px 0 rgba(0,0,0,.15); background: #000; cursor: pointer; overflow: hidden; }
+        .shelf .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .shelf .thumb .tri { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 44px; height: 32px; display: grid; place-items: center; background: #ddd; border: 2px outset #fff; font-size: 14px; color: #000; }
+        .shelf .thumb:hover .tri, .shelf .thumb:focus-visible .tri { background: #fff; }
+        .shelf .thumb:focus-visible { outline: 3px solid #00c; outline-offset: 2px; }
+        .shelf iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .shelf figcaption { font-size: 13px; margin-top: 5px; }
+        .shelf figcaption span { display: block; color: var(--muted); font-size: 12px; }
+        .shelf figure.flash .thumb { outline: 3px solid #9B4A34; outline-offset: 2px; }
+        .disco .links { font-size: 12px; white-space: nowrap; }
+        .disco .links a + a { margin-left: 8px; }
+        .tracks .vid { font-size: 12px; margin-left: 8px; }
+
         /* discography */
         .disco { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--rule); }
         .disco li { display: grid; grid-template-columns: 40px 28px 40px 1fr auto; align-items: center; gap: 10px; padding: 6px 10px 6px 8px; border-top: 1px solid #eee; }
@@ -183,6 +199,7 @@
     <p class="latest-issue" id="latest-issue" hidden><span class="small">latest issue:</span> <a id="li-link" href="https://buttondown.com/iamdavehawkins/archive/" target="_blank" rel="noopener"></a></p>
 </div>
 
+<!-- featured video: swap the heading and the embed id with the season -->
 <h3>happy thanksgiving: thanks a lot (raffi cover)</h3>
 <div class="video">
     <iframe src="https://www.youtube-nocookie.com/embed/u3ahb5PvEMw" title="thanks a lot (raffi cover), dave hawkins" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -210,6 +227,10 @@
         <p>His new EP Half Alive looks at the loops we get stuck in and the moments that break us out.</p>
     </details>
 </div>
+
+<h3>videos</h3>
+<div class="shelf" id="shelf"></div>
+<p class="small" style="margin:8px 0 0">more on <a href="https://www.youtube.com/@iamdavehawkins" target="_blank" rel="noopener">youtube</a></p>
 
 <h3>all songs</h3>
 <ul class="disco" id="disco"></ul>
@@ -281,7 +302,7 @@
 <audio id="audio" preload="none"></audio>
 
 <script>
-const SONGS = [{"t":"With Love","y":2026,"a":"https://music.iamdavehawkins.com/mp3/withlove.mp3","art":"https://music.iamdavehawkins.com/art/withlove.jpg","p":"https://withlove.iamdavehawkins.com/","ep":1},{"t":"A Loop","y":2026,"a":"https://music.iamdavehawkins.com/mp3/aloop.mp3","art":"https://music.iamdavehawkins.com/art/aloop.jpg","p":"https://aloop.iamdavehawkins.com/","ep":1},{"t":"Flicker","y":2026,"a":"https://music.iamdavehawkins.com/mp3/flicker.mp3","art":"https://music.iamdavehawkins.com/art/flicker.jpg","p":"https://flicker.iamdavehawkins.com/","ep":1},{"t":"Good Behavior","y":2026,"a":"https://music.iamdavehawkins.com/mp3/goodbehavior.mp3","art":"https://music.iamdavehawkins.com/art/goodbehavior.jpg","p":"https://goodbehavior.iamdavehawkins.com/","ep":1},{"t":"Half Alive","y":2026,"a":"https://music.iamdavehawkins.com/mp3/halfalive.mp3","art":"https://music.iamdavehawkins.com/art/halfalive.jpg","p":"https://halfaliveep.iamdavehawkins.com/","ep":1},{"t":"How Many More Decembers","y":2025,"a":"https://music.iamdavehawkins.com/mp3/howmanymoredecembers.mp3","art":"https://music.iamdavehawkins.com/art/howmanymoredecembers.jpg","p":"https://howmanymoredecembers.iamdavehawkins.com/"},{"t":"Wool & Fur","y":2025,"a":"https://music.iamdavehawkins.com/mp3/woolandfur.mp3","art":"https://music.iamdavehawkins.com/art/woolandfur.jpg","p":"https://woolandfur.iamdavehawkins.com/"},{"t":"It's a Long Drive to Christmas","y":2024,"a":"https://music.iamdavehawkins.com/mp3/itsalongdrivetochristmas.mp3","art":"https://music.iamdavehawkins.com/art/itsalongdrivetochristmas.jpg","p":"https://itsalongdrivetochristmas.iamdavehawkins.com/"},{"t":"Bones","y":2024,"a":"https://music.iamdavehawkins.com/mp3/bones.mp3","art":"https://music.iamdavehawkins.com/art/bones.jpg","p":"https://bones.iamdavehawkins.com/"},{"t":"Colors of the Leaves","y":2024,"a":"https://music.iamdavehawkins.com/mp3/colorsoftheleaves.mp3","art":"https://music.iamdavehawkins.com/art/colorsoftheleaves.jpg","p":"https://colorsoftheleaves.iamdavehawkins.com/"},{"t":"Santa Fe","y":2024,"a":"https://music.iamdavehawkins.com/mp3/santafe.mp3","art":"https://music.iamdavehawkins.com/art/santafe.jpg","p":"https://santafe.iamdavehawkins.com/"},{"t":"Richmond Airport Ground Crew","y":2024,"a":"https://music.iamdavehawkins.com/mp3/richmondairportgroundcrew.mp3","art":"EP Images/Half Alive EP - Album Cover 1.png","gray":1,"p":"https://richmondairportgroundcrew.iamdavehawkins.com/"},{"t":"Strawberry Summer","y":2023,"a":"https://music.iamdavehawkins.com/mp3/strawberrysummer.mp3","art":"https://music.iamdavehawkins.com/art/strawberrysummer.jpg","p":"https://strawberrysummer.iamdavehawkins.com/"},{"t":"The Aspen","y":2023,"a":"https://music.iamdavehawkins.com/mp3/theaspen.mp3","art":"https://music.iamdavehawkins.com/art/theaspen.jpg","p":"https://theaspen.iamdavehawkins.com/"},{"t":"Stairs in White","y":2023,"a":"https://music.iamdavehawkins.com/mp3/stairsinwhite.mp3","art":"https://music.iamdavehawkins.com/art/stairsinwhite.jpg","p":"https://stairsinwhite.iamdavehawkins.com/"},{"t":"The Day You Never Came","y":2023,"a":"https://music.iamdavehawkins.com/mp3/thedayyounevercame.mp3","art":"https://music.iamdavehawkins.com/art/thedayyounevercame.jpg","p":"https://thedayyounevercame.iamdavehawkins.com/"},{"t":"Dusty Record","y":2023,"a":"https://music.iamdavehawkins.com/mp3/dustyrecord.mp3","art":"https://music.iamdavehawkins.com/art/dustyrecord.jpg","p":"https://dustyrecord.iamdavehawkins.com/"},{"t":"Up Ahead","y":2023,"a":"https://music.iamdavehawkins.com/mp3/upahead.mp3","art":"https://music.iamdavehawkins.com/art/upahead.jpg","p":"https://upahead.iamdavehawkins.com/"}];
+const SONGS = [{"t":"With Love","v":"aEHIni3-naY","y":2026,"a":"https://music.iamdavehawkins.com/mp3/withlove.mp3","art":"https://music.iamdavehawkins.com/art/withlove.jpg","p":"https://withlove.iamdavehawkins.com/","ep":1},{"t":"A Loop","v":"LGvOouPAe1A","y":2026,"a":"https://music.iamdavehawkins.com/mp3/aloop.mp3","art":"https://music.iamdavehawkins.com/art/aloop.jpg","p":"https://aloop.iamdavehawkins.com/","ep":1},{"t":"Flicker","y":2026,"a":"https://music.iamdavehawkins.com/mp3/flicker.mp3","art":"https://music.iamdavehawkins.com/art/flicker.jpg","p":"https://flicker.iamdavehawkins.com/","ep":1},{"t":"Good Behavior","y":2026,"a":"https://music.iamdavehawkins.com/mp3/goodbehavior.mp3","art":"https://music.iamdavehawkins.com/art/goodbehavior.jpg","p":"https://goodbehavior.iamdavehawkins.com/","ep":1},{"t":"Half Alive","y":2026,"a":"https://music.iamdavehawkins.com/mp3/halfalive.mp3","art":"https://music.iamdavehawkins.com/art/halfalive.jpg","p":"https://halfaliveep.iamdavehawkins.com/","ep":1},{"t":"How Many More Decembers","v":"QxNKhkylDGY","y":2025,"a":"https://music.iamdavehawkins.com/mp3/howmanymoredecembers.mp3","art":"https://music.iamdavehawkins.com/art/howmanymoredecembers.jpg","p":"https://howmanymoredecembers.iamdavehawkins.com/"},{"t":"Wool & Fur","v":"iN3Lr3CLIcU","y":2025,"a":"https://music.iamdavehawkins.com/mp3/woolandfur.mp3","art":"https://music.iamdavehawkins.com/art/woolandfur.jpg","p":"https://woolandfur.iamdavehawkins.com/"},{"t":"It's a Long Drive to Christmas","v":"u6ecaHt03eY","y":2024,"a":"https://music.iamdavehawkins.com/mp3/itsalongdrivetochristmas.mp3","art":"https://music.iamdavehawkins.com/art/itsalongdrivetochristmas.jpg","p":"https://itsalongdrivetochristmas.iamdavehawkins.com/"},{"t":"Bones","v":"Y7pT_aJnpMU","y":2024,"a":"https://music.iamdavehawkins.com/mp3/bones.mp3","art":"https://music.iamdavehawkins.com/art/bones.jpg","p":"https://bones.iamdavehawkins.com/"},{"t":"Colors of the Leaves","v":"-D9iPx8mreY","y":2024,"a":"https://music.iamdavehawkins.com/mp3/colorsoftheleaves.mp3","art":"https://music.iamdavehawkins.com/art/colorsoftheleaves.jpg","p":"https://colorsoftheleaves.iamdavehawkins.com/"},{"t":"Santa Fe","y":2024,"a":"https://music.iamdavehawkins.com/mp3/santafe.mp3","art":"https://music.iamdavehawkins.com/art/santafe.jpg","p":"https://santafe.iamdavehawkins.com/"},{"t":"Richmond Airport Ground Crew","v":"95IP0zr2AfI","y":2024,"a":"https://music.iamdavehawkins.com/mp3/richmondairportgroundcrew.mp3","art":"EP Images/Half Alive EP - Album Cover 1.png","gray":1,"p":"https://richmondairportgroundcrew.iamdavehawkins.com/"},{"t":"Strawberry Summer","v":"xFu3cpPFpOA","y":2023,"a":"https://music.iamdavehawkins.com/mp3/strawberrysummer.mp3","art":"https://music.iamdavehawkins.com/art/strawberrysummer.jpg","p":"https://strawberrysummer.iamdavehawkins.com/"},{"t":"The Aspen","y":2023,"a":"https://music.iamdavehawkins.com/mp3/theaspen.mp3","art":"https://music.iamdavehawkins.com/art/theaspen.jpg","p":"https://theaspen.iamdavehawkins.com/"},{"t":"Stairs in White","y":2023,"a":"https://music.iamdavehawkins.com/mp3/stairsinwhite.mp3","art":"https://music.iamdavehawkins.com/art/stairsinwhite.jpg","p":"https://stairsinwhite.iamdavehawkins.com/"},{"t":"The Day You Never Came","y":2023,"a":"https://music.iamdavehawkins.com/mp3/thedayyounevercame.mp3","art":"https://music.iamdavehawkins.com/art/thedayyounevercame.jpg","p":"https://thedayyounevercame.iamdavehawkins.com/"},{"t":"Dusty Record","v":"O9CZYCK5aRY","y":2023,"a":"https://music.iamdavehawkins.com/mp3/dustyrecord.mp3","art":"https://music.iamdavehawkins.com/art/dustyrecord.jpg","p":"https://dustyrecord.iamdavehawkins.com/"},{"t":"Up Ahead","v":"lYajdnLMBm4","y":2023,"a":"https://music.iamdavehawkins.com/mp3/upahead.mp3","art":"https://music.iamdavehawkins.com/art/upahead.jpg","p":"https://upahead.iamdavehawkins.com/"}];
 const PLAY = '<svg viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z"/></svg>', PAUSE = '<svg viewBox="0 0 10 10"><path d="M2 1h2v8H2zM6 1h2v8H6z"/></svg>';
 const audio = document.getElementById('audio'), rows = [];
 let cur = -1;
@@ -292,13 +313,52 @@ let n = 0;
 SONGS.forEach((s, i) => {
     if (s.ep) {
         const li = document.createElement('li');
-        li.innerHTML = `<span class="n mono">${++n}</span><span class="t"><a href="${s.p}" target="_blank" rel="noopener">${s.t}</a></span>`;
+        li.innerHTML = `<span class="n mono">${++n}</span><span class="t"><a href="${s.p}" target="_blank" rel="noopener">${s.t}</a>${s.v ? `<a class="vid" href="https://www.youtube.com/watch?v=${s.v}" data-v="${s.v}">video</a>` : ''}</span>`;
         li.prepend(btn(i)); document.getElementById('epTracks').append(li); rows[i] = li; return;
     }
     const prev = SONGS[i - 1], newYear = !prev || prev.y !== s.y || prev.ep;
     const li = document.createElement('li'); if (newYear) { li.className = 'new-year'; li.dataset.year = s.y; }
-    li.innerHTML = `<span class="yr mono">${newYear ? s.y : ''}</span><span></span><img src="${s.art}" alt="" loading="lazy"${s.gray ? " style=\"filter:grayscale(1) brightness(1.2)\"" : ""}><span class="t">${s.t}</span><a class="pg" href="${s.p}" target="_blank" rel="noopener">song page</a>`;
+    li.innerHTML = `<span class="yr mono">${newYear ? s.y : ''}</span><span></span><img src="${s.art}" alt="" loading="lazy"${s.gray ? " style=\"filter:grayscale(1) brightness(1.2)\"" : ""}><span class="t">${s.t}</span><span class="links">${s.v ? `<a href="https://www.youtube.com/watch?v=${s.v}" data-v="${s.v}">video</a>` : ''}<a class="pg" href="${s.p}" target="_blank" rel="noopener">song page</a></span>`;
     li.children[1].replaceWith(btn(i)); document.getElementById('disco').append(li); rows[i] = li;
+});
+
+// videos shelf: thumbnails load first; the YouTube player loads only when one is tapped
+const VIDEOS = [
+    ["QxNKhkylDGY", "How Many More Decembers", "live on the blue couch"],
+    ["u6ecaHt03eY", "It's a Long Drive to Christmas", "lyric video"],
+    ["aEHIni3-naY", "With Love", "music video"],
+    ["LGvOouPAe1A", "A Loop", "animation"],
+    ["iN3Lr3CLIcU", "Wool & Fur", "animation"],
+    ["Y7pT_aJnpMU", "Bones", "lyric video"],
+    ["SZ_QA-D0gGA", "Bones", "live"],
+    ["-D9iPx8mreY", "Colors of the Leaves", "animation"],
+    ["95IP0zr2AfI", "Richmond Airport Ground Crew", "one dad band"],
+    ["xFu3cpPFpOA", "Strawberry Summer", "music video"],
+    ["O9CZYCK5aRY", "Dusty Record", "music video"],
+    ["lYajdnLMBm4", "Up Ahead", "lyric video"],
+];
+const shelf = document.getElementById('shelf');
+function playVideo(fig) {
+    const t = fig.querySelector('.thumb');
+    if (!t.querySelector('iframe')) {
+        audio.pause();
+        t.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${fig.dataset.v}?autoplay=1" title="${fig.dataset.title}" allow="autoplay; encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`;
+    }
+}
+VIDEOS.forEach(([v, title, kind]) => {
+    const fig = document.createElement('figure');
+    fig.dataset.v = v; fig.dataset.title = title + ' (' + kind + ')';
+    fig.innerHTML = `<button class="thumb" aria-label="play ${title}, ${kind}"><img src="https://i.ytimg.com/vi/${v}/hqdefault.jpg" alt="" loading="lazy"><span class="tri">&#9654;</span></button><figcaption>${title} <span>${kind}</span></figcaption>`;
+    fig.querySelector('.thumb').onclick = () => playVideo(fig);
+    shelf.append(fig);
+});
+document.addEventListener('click', e => {
+    const a = e.target.closest('a[data-v]'); if (!a) return;
+    const fig = shelf.querySelector(`figure[data-v="${a.dataset.v}"]`); if (!fig) return;
+    e.preventDefault();
+    fig.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+    fig.classList.add('flash'); setTimeout(() => fig.classList.remove('flash'), 1600);
+    playVideo(fig);
 });
 
 function fmt(t) { t = Math.floor(t || 0); return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); }
